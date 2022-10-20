@@ -59,3 +59,16 @@ int	file_to_str(int fd, char **file_str)
 	}
 	return (0);
 }
+
+int	get_map_fd(const char *map_name)
+{
+	int	map_fd;
+
+	map_fd = open(map_name, O_RDONLY);
+	if (map_fd == -1)
+	{
+		perror("Error: open()");
+		exit(EXIT_FAILURE);
+	}
+	return (map_fd);
+}

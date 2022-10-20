@@ -2,6 +2,7 @@ a.out*
 .DS_Store
 cub3d
 obj/
+.vscode/
 
 # Prerequisites
 *.d

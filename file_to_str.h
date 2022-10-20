@@ -8,5 +8,6 @@
 #include <unistd.h>
 
 int	file_to_str(int fd, char **file_str);
+int	get_map_fd(const char *map_name);
 
 #endif /* file_to_str.h */

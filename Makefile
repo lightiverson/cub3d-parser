@@ -7,6 +7,7 @@ OBJECTS :=	obj/file_to_str.o \
 LDFLAGS ?=
 CFLAGS ?=	-Wall -Wextra -Werror
 LIBFT :=	./libft
+UTESTS := tests
 
 all : libft $(NAME)
 
@@ -20,14 +21,20 @@ obj/%.o : %.c $(HEADERS)
 	@mkdir -p $(dir $@)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
+utests: all
+	make -C $(UTESTS)
+
 clean :
 	make clean -C $(LIBFT)
+	make clean -C $(UTESTS)
 	rm -rf obj
 
 fclean : clean
 	make fclean -C $(LIBFT)
+	make fclean -C $(UTESTS)
 	rm -f $(NAME)
+	rm -f run_tests
 
 re : fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft utests
