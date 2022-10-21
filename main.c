@@ -26,6 +26,8 @@ int main (int argc, char *argv[argc + 1])
 	lst = tokenizer(file_str);
 	print_map_elements(lst);
 
+	printf("is_sorted() = %i\n", is_sorted(lst));
+
 	free(file_str);
 	free_map_elements(lst);
 

@@ -1,5 +1,22 @@
 #include "tokenize.h"
 
+bool is_sorted(t_map_element *map_element)
+{
+	int	p;
+	// kan map_element 0 zijn?
+	if (!map_element)
+		return (false);
+	p = map_element->type;
+	while (map_element)
+	{
+		if (map_element->type < p)
+			return (false);
+		p = map_element->type;
+		map_element = map_element->next;
+	}
+	return (true);
+}
+
 bool is_dot_cub_file(char *arg)
 {
 	size_t	len;
@@ -124,8 +141,8 @@ t_map_element	*tokenizer(char *file_str)
 			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
 		else if (!strncmp(split_a[i], "C ", 2))
 			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
-		// else
-		// 	tokenize_map_element(split_a[i], MAP, &map_elements);
+		else
+			tokenize_map_element(split_a[i], MAP, &map_elements);
 		i++;
 	}
 	free_splitted_array(split_a);
