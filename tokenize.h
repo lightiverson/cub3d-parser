@@ -1,10 +1,13 @@
 #ifndef TOKENIZE_H
 # define TOKENIZE_H
 
-#include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
+/* Public libraries */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 
+/* Private libraries */
 #include "libft/libft.h"
 
 typedef struct s_map_element {
@@ -13,6 +16,15 @@ typedef struct s_map_element {
 	struct s_map_element	*next;
 }	t_map_element;
 
+enum e_element_types {
+	C_DIRECTION = 1,
+	FLOOR_CEILING,
+	MAP
+};
+
+/* tokenize.c */
+
+bool			is_dot_cub_file(char *arg);
 void			free_map_elements(t_map_element *head);
 void			tokenize_map_element(char *input_elem, int type, t_map_element **lst);
 void			print_map_elements(t_map_element *head);

@@ -1,5 +1,19 @@
 #include "tokenize.h"
 
+bool is_dot_cub_file(char *arg)
+{
+	size_t	len;
+	char	*extension;
+
+	len = strlen(arg);
+	if (len < 4)
+		return (false);
+	extension = arg + len - 4;
+	if (strncmp(extension, ".cub\0", 5))
+		return (false);
+	return (true);
+}
+
 void	print_map_elements(t_map_element *head)
 {
 	while (head)
@@ -38,7 +52,7 @@ void	free_map_elements(t_map_element *head)
 
 static t_map_element	*init_map_element(char *map_element, int type)
 {
-	t_map_element *node;
+	t_map_element	*node;
 
 	node = malloc(sizeof(*node));
 	if (!node)
@@ -99,22 +113,19 @@ t_map_element	*tokenizer(char *file_str)
 	while (split_a[i])
 	{
 		if (!strncmp(split_a[i], "NO ", 3))
-			tokenize_map_element(split_a[i], 0, &map_elements);
+			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
 		else if (!strncmp(split_a[i], "SO ", 3))
-			tokenize_map_element(split_a[i], 0, &map_elements);
+			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
 		else if (!strncmp(split_a[i], "WE ", 3))
-			tokenize_map_element(split_a[i], 0, &map_elements);
+			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
 		else if (!strncmp(split_a[i], "EA ", 3))
-			tokenize_map_element(split_a[i], 0, &map_elements);
+			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
 		else if (!strncmp(split_a[i], "F ", 2))
-			tokenize_map_element(split_a[i], 1, &map_elements);
+			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
 		else if (!strncmp(split_a[i], "C ", 2))
-			tokenize_map_element(split_a[i], 1, &map_elements);
-		else
-		{
-			tokenize_map_element(split_a[i], 2, &map_elements);
-			// printf("Wat moeten we hier doen? Map element handelen?\n");
-		}
+			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
+		// else
+		// 	tokenize_map_element(split_a[i], MAP, &map_elements);
 		i++;
 	}
 	free_splitted_array(split_a);

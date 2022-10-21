@@ -3,7 +3,7 @@
 #include "../tokenize.h"
 #include "../file_to_str.h"
 
-Test(input_files, valid)
+Test(tokenizer, kawish_cub)
 {
 	unsigned int	i;
 	int				map_fd;
@@ -21,6 +21,35 @@ Test(input_files, valid)
 
 	i = 0;
 	map_fd = get_map_fd("./maps/kawish.cub");
+	file_to_str(map_fd, &file_str);
+	lst = tokenizer(file_str);
+	while (lst)
+	{
+		cr_assert(eq(str, lst->map_element, expected[i]));
+		lst = lst->next;
+		i++;
+	}
+}
+
+Test(tokenizer, trip_cub)
+{
+	unsigned int	i;
+	int				map_fd;
+	char			*file_str;
+	t_map_element	*lst;
+	char			*expected[] = {
+		"      NO ./textures/trip5.xpm",
+		"      EA ./textures/trip2.xpm",
+		"      SO ./textures/trip3.xpm",
+		"  WE ./textures/trip4.xpm",
+		"      S ./sprites/tiger.png",
+		"     F    38, 38, 38",
+		"     C    209, 209, 209",
+		0
+	};
+
+	i = 0;
+	map_fd = get_map_fd("./maps/trip.cub");
 	file_to_str(map_fd, &file_str);
 	lst = tokenizer(file_str);
 	while (lst)
