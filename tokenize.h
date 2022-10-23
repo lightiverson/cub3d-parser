@@ -17,9 +17,9 @@ typedef struct s_map_element {
 }	t_map_element;
 
 enum e_element_types {
-	C_DIRECTION = 1,
-	FLOOR_CEILING,
-	MAP
+	E_CARDINAL = 1,
+	E_FLOOR_CEILING,
+	E_MAP
 };
 
 /* tokenize.c */

@@ -1,6 +1,6 @@
 #include "tokenize.h"
 
-bool is_sorted(t_map_element *map_element)
+bool is_sorted_twee(t_map_element *map_element)
 {
 	int	p;
 	// kan map_element 0 zijn?
@@ -12,6 +12,22 @@ bool is_sorted(t_map_element *map_element)
 		if (map_element->type < p)
 			return (false);
 		p = map_element->type;
+		map_element = map_element->next;
+	}
+	return (true);
+}
+
+bool is_sorted(t_map_element *map_element)
+{
+	bool has_encountered_type_three;
+
+	has_encountered_type_three = false;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP)
+			has_encountered_type_three = true;
+		if (has_encountered_type_three && map_element->type < E_MAP)
+			return (false);
 		map_element = map_element->next;
 	}
 	return (true);
@@ -35,7 +51,7 @@ void	print_map_elements(t_map_element *head)
 {
 	while (head)
 	{
-		printf("head->map_element = |%s|\n", head->map_element);
+		// printf("head->map_element = |%s|\n", head->map_element);
 		printf("head->type = %i\n", head->type);
 		head = head->next;
 	}
@@ -130,19 +146,19 @@ t_map_element	*tokenizer(char *file_str)
 	while (split_a[i])
 	{
 		if (!strncmp(split_a[i], "NO ", 3))
-			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
+			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
 		else if (!strncmp(split_a[i], "SO ", 3))
-			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
+			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
 		else if (!strncmp(split_a[i], "WE ", 3))
-			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
+			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
 		else if (!strncmp(split_a[i], "EA ", 3))
-			tokenize_map_element(split_a[i], C_DIRECTION, &map_elements);
+			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
 		else if (!strncmp(split_a[i], "F ", 2))
-			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
+			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
 		else if (!strncmp(split_a[i], "C ", 2))
-			tokenize_map_element(split_a[i], FLOOR_CEILING, &map_elements);
+			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
 		else
-			tokenize_map_element(split_a[i], MAP, &map_elements);
+			tokenize_map_element(split_a[i], E_MAP, &map_elements);
 		i++;
 	}
 	free_splitted_array(split_a);
