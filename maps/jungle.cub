@@ -1,4 +1,4 @@
-   R 1200    700
+
 
 
 
@@ -7,7 +7,6 @@
       EA textures/diertjes.xpm
       SO ./textures/plantdonker.xpm
   WE ./textures/jungledonker.xpm
-      S ./sprites/tiger.png
 
      F    8, 54, 6
      C    101, 133, 161

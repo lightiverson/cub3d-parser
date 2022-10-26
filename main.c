@@ -26,7 +26,12 @@ int main (int argc, char *argv[argc + 1])
 	lst = tokenizer(file_str);
 	print_map_elements(lst);
 
-	printf("is_sorted() = %i\n", is_sorted(lst));
+	if (!is_sorted(lst))
+	{
+		printf("Error: Map elements are in the wrong order\n");
+		exit(EXIT_FAILURE);
+	}
+	
 
 	free(file_str);
 	free_map_elements(lst);

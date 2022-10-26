@@ -51,7 +51,7 @@ void	print_map_elements(t_map_element *head)
 {
 	while (head)
 	{
-		// printf("head->map_element = |%s|\n", head->map_element);
+		printf("head->map_element = |%s|\n", head->map_element);
 		printf("head->type = %i\n", head->type);
 		head = head->next;
 	}
@@ -129,6 +129,18 @@ void	tokenize_map_element(char *input_elem, int type, t_map_element **lst)
 	map_elements_add_back(lst, node);
 }
 
+void	print_splitted_a(char **split_a)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (split_a[i])
+	{
+		printf("split_a[%i] = |%s|\n", i, split_a[i]);
+		i++;
+	}
+}
+
 t_map_element	*tokenizer(char *file_str)
 {
 	char			**split_a;
@@ -141,21 +153,22 @@ t_map_element	*tokenizer(char *file_str)
 		perror("Error: malloc()\n");
 		exit(EXIT_FAILURE);
 	}
+	// print_splitted_a(split_a);
 	i = 0;
 	map_elements = 0;
 	while (split_a[i])
 	{
-		if (!strncmp(split_a[i], "NO ", 3))
+		if (ft_strnstr(split_a[i], "NO ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (!strncmp(split_a[i], "SO ", 3))
+		else if (ft_strnstr(split_a[i], "SO ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (!strncmp(split_a[i], "WE ", 3))
+		else if (ft_strnstr(split_a[i], "WE ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (!strncmp(split_a[i], "EA ", 3))
+		else if (ft_strnstr(split_a[i], "EA ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (!strncmp(split_a[i], "F ", 2))
+		else if (ft_strnstr(split_a[i], "F ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
-		else if (!strncmp(split_a[i], "C ", 2))
+		else if (ft_strnstr(split_a[i], "C ", ft_strlen(split_a[i])))
 			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
 		else
 			tokenize_map_element(split_a[i], E_MAP, &map_elements);

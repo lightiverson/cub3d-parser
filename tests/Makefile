@@ -1,6 +1,7 @@
 NAME :=				../unit_tests
-TEST_OBJECTS :=		obj/simple.o \
-					obj/file_extension.o
+TEST_OBJECTS :=		obj/test_tokenizer.o \
+					obj/test_file_extension.o \
+					obj/test_is_sorted.o
 CUB3D_OBJECTS :=	../obj/file_to_str.o \
 					../obj/tokenize.o
 LIBFT :=			../libft
