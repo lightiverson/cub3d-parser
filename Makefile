@@ -1,9 +1,14 @@
 NAME := cub3d
 HEADERS :=	file_to_str.h \
-			tokenize.h
+			input_validation.h \
+			structs.h \
+			tokenize.h \
+			utils.h
 MAIN :=		obj/main.o
 OBJECTS :=	obj/file_to_str.o \
-			obj/tokenize.o
+			obj/input_validation.o \
+			obj/tokenize.o \
+			obj/utils.o
 LDFLAGS ?=
 CFLAGS ?=	-Wall -Wextra -Werror
 LIBFT :=	./libft

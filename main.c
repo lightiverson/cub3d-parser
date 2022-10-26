@@ -1,6 +1,7 @@
 #include "file_to_str.h"
 #include "libft/libft.h"
 #include "tokenize.h"
+#include "input_validation.h"
 
 int main (int argc, char *argv[argc + 1])
 {
@@ -28,11 +29,12 @@ int main (int argc, char *argv[argc + 1])
 
 	if (!is_sorted(lst))
 	{
+		free(file_str);
+		free_map_elements(lst);
 		printf("Error: Map elements are in the wrong order\n");
 		exit(EXIT_FAILURE);
 	}
 	
-
 	free(file_str);
 	free_map_elements(lst);
 

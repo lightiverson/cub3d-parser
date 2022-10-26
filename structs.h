@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   file_to_str.h                                      :+:    :+:            */
+/*   structs.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/26 11:57:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 11:57:29 by kgajadie      ########   odam.nl         */
+/*   Created: 2022/10/26 12:07:43 by kgajadie      #+#    #+#                 */
+/*   Updated: 2022/10/26 12:07:44 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_TO_STR_H
-# define FILE_TO_STR_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-/* Public libraries */
-# include <stdio.h>
-# include <fcntl.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
+typedef struct s_map_element {
+	char					*map_element;
+	int						type;
+	struct s_map_element	*next;
+}	t_map_element;
 
-int	file_to_str(int fd, char **file_str);
-int	get_map_fd(const char *map_name);
-
-#endif /* file_to_str.h */
+#endif

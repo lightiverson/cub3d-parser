@@ -1,4 +1,16 @@
-# include "file_to_str.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   file_to_str.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/26 11:56:56 by kgajadie      #+#    #+#                 */
+/*   Updated: 2022/10/26 11:57:13 by kgajadie      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "file_to_str.h"
 
 static char	*ft_strcpy(char *dest, const char *src)
 {
