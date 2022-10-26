@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:29:51 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 16:34:15 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/26 17:33:13 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 
 bool has_invalid_chars(t_map_element *map_element);
 bool has_multiple_start_positions(t_map_element *map_element);
+bool has_start_position(t_map_element *map_element);
 
 #endif /* validate_map.h */
