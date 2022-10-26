@@ -1,12 +1,12 @@
 NAME := cub3d
 HEADERS :=	file_to_str.h \
-			input_validation.h \
+			validate_input.h \
 			structs.h \
 			tokenize.h \
 			utils.h
 MAIN :=		obj/main.o
 OBJECTS :=	obj/file_to_str.o \
-			obj/input_validation.o \
+			obj/validate_input.o \
 			obj/tokenize.o \
 			obj/utils.o
 LDFLAGS ?=

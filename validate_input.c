@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   input_validation.c                                 :+:    :+:            */
+/*   validate_input.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 11:58:25 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/26 12:17:29 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "input_validation.h"
+#include "validate_input.h"
 
 bool	is_sorted(t_map_element *map_element)
 {

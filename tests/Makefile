@@ -3,7 +3,7 @@ TEST_OBJECTS :=		obj/test_tokenizer.o \
 					obj/test_file_extension.o \
 					obj/test_is_sorted.o
 CUB3D_OBJECTS :=	../obj/file_to_str.o \
-					../obj/input_validation.o \
+					../obj/validate_input.o \
 					../obj/tokenize.o \
 					../obj/utils.o
 LIBFT :=			../libft
