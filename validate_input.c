@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 12:17:29 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/26 16:37:44 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ bool	is_dot_cub_file(char *arg)
 	size_t	len;
 	char	*extension;
 
-	len = strlen(arg);
+	len = ft_strlen(arg);
 	if (len < 4)
 		return (false);
 	extension = arg + len - 4;
-	if (strncmp(extension, ".cub\0", 5))
+	if (ft_strncmp(extension, ".cub\0", 5))
 		return (false);
 	return (true);
 }
+
+/*
+bool has 4 compassdirections
+bool has 2 floor ceilings
+*/

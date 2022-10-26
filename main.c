@@ -2,6 +2,7 @@
 #include "libft/libft.h"
 #include "tokenize.h"
 #include "validate_input.h"
+#include "validate_map.h"
 
 char	**calloc_two_d_a(t_map_element *map_element)
 {
@@ -52,7 +53,7 @@ int main (int argc, char *argv[argc + 1])
 {
 	int				map_fd;
 	char			*file_str;
-	t_map_element	*lst;
+	t_map_element	*map_element;
 
 	if (argc != 2)
 	{
@@ -69,21 +70,30 @@ int main (int argc, char *argv[argc + 1])
 	file_to_str(map_fd, &file_str);
 	printf("file_to_str = |%s|\n", file_str);
 
-	lst = tokenizer(file_str);
-	print_map_elements(lst);
+	map_element = tokenizer(file_str);
+	// wat als map_element 0 is? 
+	// Kan dit? Vast wel? Dit betekend dat er geen tokens zijn,
+	// en dus geen valid characters in de input zitten
+	print_map_elements(map_element);
 
-	if (!is_sorted(lst))
+	if (!is_sorted(map_element))
 	{
 		free(file_str);
-		free_map_elements(lst);
+		free_map_elements(map_element);
 		printf("Error: Map elements are in the wrong order\n");
 		exit(EXIT_FAILURE);
 	}
-	
-	lltotwoda(lst, file_str);
 
+	if (has_multiple_start_positions(map_element))
+	{
+		free(file_str);
+		free_map_elements(map_element);
+		printf("Error: Map element contains multiple start positions\n");
+		exit(EXIT_FAILURE);
+	}
+	
 	free(file_str);
-	free_map_elements(lst);
+	free_map_elements(map_element);
 
 
 	return (EXIT_SUCCESS);
