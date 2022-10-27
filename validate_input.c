@@ -6,11 +6,25 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 16:37:44 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/27 10:32:06 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_input.h"
+
+bool	is_dot_cub_file(char *arg)
+{
+	size_t	len;
+	char	*extension;
+
+	len = ft_strlen(arg);
+	if (len < 4)
+		return (false);
+	extension = arg + len - 4;
+	if (ft_strncmp(extension, ".cub\0", 5))
+		return (false);
+	return (true);
+}
 
 bool	is_sorted(t_map_element *map_element)
 {
@@ -28,21 +42,39 @@ bool	is_sorted(t_map_element *map_element)
 	return (true);
 }
 
-bool	is_dot_cub_file(char *arg)
+bool	has_four_cardinals(t_map_element *map_element)
 {
-	size_t	len;
-	char	*extension;
+	unsigned int	c;
 
-	len = ft_strlen(arg);
-	if (len < 4)
-		return (false);
-	extension = arg + len - 4;
-	if (ft_strncmp(extension, ".cub\0", 5))
-		return (false);
-	return (true);
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_CARDINAL)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c == 4)
+		return (true);
+	return (false);
+}
+
+bool	has_two_f_c(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_FLOOR_CEILING)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c == 2)
+		return (true);
+	return (false);
 }
 
 /*
-bool has 4 compassdirections
-bool has 2 floor ceilings
+Hoeveel type E_MAP tokens moet je minimaal hebben voor een geldige map?
+Maak een functie die dit checkt
 */
