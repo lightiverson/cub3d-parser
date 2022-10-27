@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 10:48:58 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/27 11:58:51 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ static void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
 		tokenize_map_element(split_a_i, E_MAP, map_elements);
 }
 
+/*
+Except for the map content, each type of element can be separated by one or
+more empty line(s).
+*/
 t_map_element	*tokenizer(char *file_str)
 {
 	char			**split_a;
@@ -86,7 +90,7 @@ t_map_element	*tokenizer(char *file_str)
 	split_a = ft_split(file_str, '\n');
 	if (!split_a)
 	{
-		perror("Error: malloc()\n");
+		perror("Error: ft_split()\n");
 		exit(EXIT_FAILURE);
 	}
 	i = 0;

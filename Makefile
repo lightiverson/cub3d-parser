@@ -10,7 +10,8 @@ OBJECTS :=	obj/file_to_str.o \
 			obj/tokenize.o \
 			obj/utils.o \
 			obj/validate_input.o \
-			obj/validate_map.o
+			obj/validate_map.o \
+			obj/validate_non_map_elements.o
 LDFLAGS ?=
 CFLAGS ?=	-Wall -Wextra -Werror
 LIBFT :=	./libft

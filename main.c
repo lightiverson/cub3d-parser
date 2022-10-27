@@ -4,51 +4,10 @@
 #include "validate_input.h"
 #include "validate_map.h"
 
-char	**calloc_two_d_a(t_map_element *map_element)
-{
-	unsigned int	n;
-	char			**two_d_a;
-
-	n = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_MAP)
-			n++;
-		map_element = map_element->next;
-	}
-	two_d_a = ft_calloc(n + 1, sizeof(*two_d_a));
-	if (!two_d_a)
-		return (0);
-	return (two_d_a);
-}
-	
-char	**lltotwoda(t_map_element *map_element, char *file_str)
-{
-	unsigned int	i;
-	char			**two_d_a;
-
-	i = 0;
-	two_d_a = calloc_two_d_a(map_element);
-	if (!two_d_a)
-	{
-		free(file_str);
-		free_map_elements(map_element);
-		perror("Error: malloc()");
-		exit(EXIT_FAILURE);
-	}
-	while (map_element)
-	{
-		if (map_element->type == E_MAP)
-		{
-			two_d_a[i] = map_element->map_element;
-			i++;
-		}
-		map_element = map_element->next;
-	}
-	print_splitted_a(two_d_a);
-	return (two_d_a);
-}
-
+/*
+The map must be closed/surrounded by walls, if not the program must return
+an error.
+*/
 int main (int argc, char *argv[argc + 1])
 {
 	int				map_fd;
@@ -91,10 +50,11 @@ int main (int argc, char *argv[argc + 1])
 		printf("Error: Map element contains multiple start positions\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
+	printf("has_two_strs(map_element) = %i\n", has_two_strs(map_element));
+
 	free(file_str);
 	free_map_elements(map_element);
-
 
 	return (EXIT_SUCCESS);
 }

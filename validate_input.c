@@ -6,12 +6,16 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 10:32:06 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/27 11:59:08 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_input.h"
 
+/*
+Your program must take as a first argument a scene description file with the .cub
+extension.
+*/
 bool	is_dot_cub_file(char *arg)
 {
 	size_t	len;
@@ -26,6 +30,10 @@ bool	is_dot_cub_file(char *arg)
 	return (true);
 }
 
+/*
+Except for the map content which always has to be the last, each type of
+element can be set in any order in the file.
+*/
 bool	is_sorted(t_map_element *map_element)
 {
 	bool	has_encountered_type_three;
@@ -74,7 +82,18 @@ bool	has_two_f_c(t_map_element *map_element)
 	return (false);
 }
 
-/*
-Hoeveel type E_MAP tokens moet je minimaal hebben voor een geldige map?
-Maak een functie die dit checkt
-*/
+bool	has_three_map_elements_min(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c >= 3)	
+		return (true);
+	return (false);
+}

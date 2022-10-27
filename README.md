@@ -17,11 +17,3 @@ docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it --rm --ini
 --init = shiieet snap het nut niet, maar Noah gebruikt het\
 -c = CPU shares (relative weight) ???\
 sh = ?
-
-
-<!-- makefile maken -->
-<!-- criterion toevoegen -->
-<!-- tests toevoegen -->
-<!-- fix dat tokenizer map tokenized -->
-<!-- maak daarna checker voor type, die gaat fail map handelen -->
-<!-- voeg andere checks toe van schrift -->

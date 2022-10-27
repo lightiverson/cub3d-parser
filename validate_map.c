@@ -6,12 +6,17 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 10:40:51 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/27 11:57:25 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_map.h"
 
+/*
+The map must be composed of only 6 possible characters: 0 for an empty space,
+1 for a wall, and N,S,E or W for the player’s start position and spawning
+orientation.
+*/
 bool	has_invalid_chars(t_map_element *map_element)
 {
 	char	*dup;
