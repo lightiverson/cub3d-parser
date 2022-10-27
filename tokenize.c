@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 11:59:45 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/10/27 10:48:58 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	map_elements_add_back(t_map_element **lst, t_map_element *new)
 	}
 }
 
-void	tokenize_map_element(char *input_elem, int type, t_map_element **lst)
+static void	tokenize_map_element(char *input_elem, int type,
+	t_map_element **lst)
 {
 	char			*s;
 	t_map_element	*node;
@@ -56,6 +57,24 @@ void	tokenize_map_element(char *input_elem, int type, t_map_element **lst)
 	}
 	node = init_map_element(s, type);
 	map_elements_add_back(lst, node);
+}
+
+static void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
+{
+	if (ft_strnstr(split_a_i, "NO ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_CARDINAL, map_elements);
+	else if (ft_strnstr(split_a_i, "SO ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_CARDINAL, map_elements);
+	else if (ft_strnstr(split_a_i, "WE ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_CARDINAL, map_elements);
+	else if (ft_strnstr(split_a_i, "EA ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_CARDINAL, map_elements);
+	else if (ft_strnstr(split_a_i, "F ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_FLOOR_CEILING, map_elements);
+	else if (ft_strnstr(split_a_i, "C ", ft_strlen(split_a_i)))
+		tokenize_map_element(split_a_i, E_FLOOR_CEILING, map_elements);
+	else
+		tokenize_map_element(split_a_i, E_MAP, map_elements);
 }
 
 t_map_element	*tokenizer(char *file_str)
@@ -74,20 +93,7 @@ t_map_element	*tokenizer(char *file_str)
 	map_elements = 0;
 	while (split_a[i])
 	{
-		if (ft_strnstr(split_a[i], "NO ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (ft_strnstr(split_a[i], "SO ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (ft_strnstr(split_a[i], "WE ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (ft_strnstr(split_a[i], "EA ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_CARDINAL, &map_elements);
-		else if (ft_strnstr(split_a[i], "F ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
-		else if (ft_strnstr(split_a[i], "C ", ft_strlen(split_a[i])))
-			tokenize_map_element(split_a[i], E_FLOOR_CEILING, &map_elements);
-		else
-			tokenize_map_element(split_a[i], E_MAP, &map_elements);
+		inner_tokenizer(split_a[i], &map_elements);
 		i++;
 	}
 	free_splitted_array(split_a);
