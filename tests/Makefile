@@ -1,7 +1,8 @@
 NAME :=				../unit_tests
 TEST_OBJECTS :=		obj/test_tokenizer.o \
 					obj/test_has_multiple_start_positions.o \
-					obj/test_file_extension.o \
+					obj/test_has_start_position.o \
+					obj/test_is_dot_cube_file.o \
 					obj/test_is_sorted.o
 CUB3D_OBJECTS :=	../obj/file_to_str.o \
 					../obj/tokenize.o \
