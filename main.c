@@ -3,6 +3,7 @@
 #include "tokenize.h"
 #include "validate_input.h"
 #include "validate_map.h"
+#include "ll_to_two_d_array.h"
 
 /*
 The map must be closed/surrounded by walls, if not the program must return
@@ -51,7 +52,11 @@ int main (int argc, char *argv[argc + 1])
 		exit(EXIT_FAILURE);
 	}
 
-	printf("has_two_strs(map_element) = %i\n", has_two_strs(map_element));
+	printf("has_two_strs(map_element) = %i\n", has_two_valid_strs(map_element));
+
+	char **a = ll_to_two_d_array(map_element, file_str);
+	unsigned int i[2];
+	get_start_pos(a, i);
 
 	free(file_str);
 	free_map_elements(map_element);
