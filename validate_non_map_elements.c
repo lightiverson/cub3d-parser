@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 17:35:51 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/01 11:58:50 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int	count_ptrs(char **splitted_array)
 	return (c);
 }
 
-bool	beta(char *first_elem)
+bool	is_valid_cardinal_fc(char *first_elem)
 {
 	if (
 		!ft_strncmp(first_elem, "NO\0", 3)
@@ -42,7 +42,7 @@ bool	beta(char *first_elem)
 	return (false);
 }
 
-bool	has_two_strs(t_map_element *map_element)
+bool	has_two_valid_strs(t_map_element *map_element)
 {
 	char	**splitted_array;
 
@@ -59,7 +59,7 @@ bool	has_two_strs(t_map_element *map_element)
 				return (false);
 			}
 			else
-				if (!beta(splitted_array[0]))
+				if (!is_valid_cardinal_fc(splitted_array[0]))
 					return (false);
 		}
 		map_element = map_element->next;

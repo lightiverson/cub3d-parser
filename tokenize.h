@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 16:52:53 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/03 11:46:37 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void			free_map_elements(t_map_element *head);
 void			print_map_elements(t_map_element *head);
 t_map_element	*tokenizer(char *file_str);
 bool			is_sorted(t_map_element *map_element);
-
-bool has_two_strs(t_map_element *map_element);
+bool			has_two_valid_strs(t_map_element *map_element);
 
 #endif /* tokenize.h */

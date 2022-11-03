@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 11:59:08 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/03 11:45:25 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ bool	has_three_map_elements_min(t_map_element *map_element)
 			c++;
 		map_element = map_element->next;
 	}
-	if (c >= 3)	
+	if (c >= 3)
 		return (true);
 	return (false);
 }
