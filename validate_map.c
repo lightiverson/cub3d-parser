@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 11:10:53 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 16:45:34 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ bool	has_invalid_chars(t_map_element *map_element)
 	return (false);
 }
 
-bool	has_start_position(t_map_element *map_element)
+bool	has_single_start_position(t_map_element *map_element)
 {
 	char	*dup;
+	int		encounters;
 
+	encounters = 0;
 	while (map_element)
 	{
 		if (map_element->type == E_MAP)
@@ -51,57 +53,49 @@ bool	has_start_position(t_map_element *map_element)
 			while (*dup)
 			{
 				if (*dup == 'N' || *dup == 'S' || *dup == 'E' || *dup == 'W')
-					return (true);
+					encounters++;
 				dup++;
 			}
 		}
 		map_element = map_element->next;
 	}
-	return (false);
+	if (encounters != 1)
+		return (false);
+	return (true);
 }
 
-bool	has_multiple_start_positions(t_map_element *map_element)
+int	get_map_col_size(t_map_element *map_element)
 {
-	char	*dup;
-	bool	seen;
-
-	seen = false;
-	while (map_element)
-	{
-		if (map_element->type == E_MAP)
-		{
-			dup = map_element->map_element;
-			while (*dup)
-			{
-				if (seen && (*dup == 'N' || *dup == 'S' || *dup == 'E'
-						|| *dup == 'W'))
-					return (true);
-				if (!seen && (*dup == 'N' || *dup == 'S' || *dup == 'E'
-						|| *dup == 'W'))
-					seen = true;
-				dup++;
-			}
-		}
-		map_element = map_element->next;
-	}
-	return (false);
-}
-
-int count_columns(t_map_element *map_element)
-{
-	int	number_of_columns;
+	int	map_col_size;
 	int	x;
 
-	number_of_columns = 0;
+	map_col_size = 0;
 	while (map_element)
 	{
 		if (map_element->type == E_MAP && map_element->map_element)
 		{
 			x = ft_strlen(map_element->map_element);
-			if (x > number_of_columns)
-				number_of_columns = x;
+			if (x > map_col_size)
+				map_col_size = x;
 		}
 		map_element = map_element->next;
 	}
-	return (number_of_columns);
+	printf("map_col_size = %i\n", map_col_size);
+	return (map_col_size);
+}
+
+bool	has_three_map_elements_min(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c >= 3)
+		return (true);
+	return (false);
 }

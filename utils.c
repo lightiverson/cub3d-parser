@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 12:02:23 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 17:01:43 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_splitted_a(char **split_a)
 	i = 0;
 	while (split_a[i])
 	{
-		printf("split_a[%i] = |%s|\n", i, split_a[i]);
+		printf("split_a[%i] \t= |%s|\n", i, split_a[i]);
 		i++;
 	}
 }

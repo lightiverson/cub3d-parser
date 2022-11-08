@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:57:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 11:57:29 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 16:07:10 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	file_to_str(int fd, char **file_str);
+/* file_to_str.c */
 int	get_map_fd(const char *map_name);
+int	file_to_str(int fd, char **file_str);
 
 #endif /* file_to_str.h */

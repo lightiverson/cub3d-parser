@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/03 11:45:25 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 15:12:24 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,52 +48,4 @@ bool	is_sorted(t_map_element *map_element)
 		map_element = map_element->next;
 	}
 	return (true);
-}
-
-bool	has_four_cardinals(t_map_element *map_element)
-{
-	unsigned int	c;
-
-	c = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_CARDINAL)
-			c++;
-		map_element = map_element->next;
-	}
-	if (c == 4)
-		return (true);
-	return (false);
-}
-
-bool	has_two_f_c(t_map_element *map_element)
-{
-	unsigned int	c;
-
-	c = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_FLOOR_CEILING)
-			c++;
-		map_element = map_element->next;
-	}
-	if (c == 2)
-		return (true);
-	return (false);
-}
-
-bool	has_three_map_elements_min(t_map_element *map_element)
-{
-	unsigned int	c;
-
-	c = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_MAP)
-			c++;
-		map_element = map_element->next;
-	}
-	if (c >= 3)
-		return (true);
-	return (false);
 }

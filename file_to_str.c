@@ -6,11 +6,24 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:56:56 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/26 11:57:13 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 16:07:16 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_to_str.h"
+
+int	get_map_fd(const char *map_name)
+{
+	int	map_fd;
+
+	map_fd = open(map_name, O_RDONLY);
+	if (map_fd == -1)
+	{
+		perror("Error: open()");
+		exit(EXIT_FAILURE);
+	}
+	return (map_fd);
+}
 
 static char	*ft_strcpy(char *dest, const char *src)
 {
@@ -70,17 +83,4 @@ int	file_to_str(int fd, char **file_str)
 		buf[n] = '\0';
 	}
 	return (0);
-}
-
-int	get_map_fd(const char *map_name)
-{
-	int	map_fd;
-
-	map_fd = open(map_name, O_RDONLY);
-	if (map_fd == -1)
-	{
-		perror("Error: open()");
-		exit(EXIT_FAILURE);
-	}
-	return (map_fd);
 }

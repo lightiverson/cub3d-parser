@@ -3,7 +3,38 @@
 #include "tokenize.h"
 #include "validate_input.h"
 #include "validate_map.h"
-#include "ll_to_two_d_array.h"
+#include "ll_to_a_map.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+void	floodfill(char *map[], int row_pos, int col_pos, bool *is_valid, int rows, int cols)
+{
+	if (!is_valid)
+		return;
+	if (col_pos == cols || row_pos == rows || col_pos < 0 || row_pos < 0)
+	{
+		*is_valid = false;
+		return;
+	}
+	if (map[row_pos][col_pos] == 'X' || map[row_pos][col_pos] == ' ')
+	{
+		*is_valid = false;
+		return;
+	}
+	if (map[row_pos][col_pos] == '1')
+		return;
+	if (map[row_pos][col_pos] == 'N' || map[row_pos][col_pos] == 'E' || map[row_pos][col_pos] == 'S' || map[row_pos][col_pos] == 'W')
+		map[row_pos][col_pos] = '0';
+	if (map[row_pos][col_pos] == '0')
+		map[row_pos][col_pos] = '1';
+	floodfill(map, row_pos, col_pos + 1, is_valid, rows, cols);
+	floodfill(map, row_pos + 1, col_pos, is_valid, rows, cols);
+	floodfill(map, row_pos, col_pos - 1, is_valid, rows, cols);
+	floodfill(map, row_pos - 1, col_pos, is_valid, rows, cols);
+	return;
+}
 
 /*
 The map must be closed/surrounded by walls, if not the program must return
@@ -31,32 +62,22 @@ int main (int argc, char *argv[argc + 1])
 	printf("file_to_str = |%s|\n", file_str);
 
 	map_element = tokenizer(file_str);
+	print_map_elements(map_element);
 	// wat als map_element 0 is? 
 	// Kan dit? Vast wel? Dit betekend dat er geen tokens zijn,
 	// en dus geen valid characters in de input zitten
-	print_map_elements(map_element);
 
-	if (!is_sorted(map_element))
-	{
-		free(file_str);
-		free_map_elements(map_element);
-		printf("Error: Map elements are in the wrong order\n");
-		exit(EXIT_FAILURE);
-	}
+	char **a = ll_to_a_map(map_element, file_str);
+	print_splitted_a(a);
 
-	if (has_multiple_start_positions(map_element))
-	{
-		free(file_str);
-		free_map_elements(map_element);
-		printf("Error: Map element contains multiple start positions\n");
-		exit(EXIT_FAILURE);
-	}
-
-	printf("has_two_strs(map_element) = %i\n", has_two_valid_strs(map_element));
-
-	char **a = ll_to_two_d_array(map_element, file_str);
-	unsigned int i[2];
-	get_start_pos(a, i);
+	bool is_valid = true;
+	unsigned int pos[2];
+	get_start_pos(a, pos);
+	floodfill(a, pos[0], pos[1], &is_valid, get_map_size(map_element), get_map_col_size(map_element));
+	if (!is_valid)
+		printf("Map is invalid\n");
+	else
+		printf("Map is valid!\n");
 
 	free(file_str);
 	free_map_elements(map_element);

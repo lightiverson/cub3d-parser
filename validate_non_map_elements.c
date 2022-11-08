@@ -6,29 +6,23 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/01 11:58:50 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 16:04:57 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize.h"
-#include "libft/libft.h"
 
-unsigned int	count_ptrs(char **splitted_array)
+static unsigned int	count_ptrs(char **splitted_array)
 {
-	unsigned int	c;
-	char			**dup;
+	unsigned int	i;
 
-	c = 0;
-	dup = splitted_array;
-	while (*dup)
-	{
-		c++;
-		dup++;
-	}
-	return (c);
+	i = 0;
+	while (splitted_array[i])
+		i++;
+	return (i);
 }
 
-bool	is_valid_cardinal_fc(char *first_elem)
+static bool	is_valid_cardinal_fc(char *first_elem)
 {
 	if (
 		!ft_strncmp(first_elem, "NO\0", 3)
@@ -65,4 +59,36 @@ bool	has_two_valid_strs(t_map_element *map_element)
 		map_element = map_element->next;
 	}
 	return (true);
+}
+
+bool	has_four_cardinals(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_CARDINAL)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c == 4)
+		return (true);
+	return (false);
+}
+
+bool	has_floor_and_ceiling(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_FLOOR_CEILING)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c == 2)
+		return (true);
+	return (false);
 }

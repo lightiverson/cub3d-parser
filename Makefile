@@ -7,7 +7,8 @@ HEADERS :=	file_to_str.h \
 			validate_map.h
 MAIN :=		obj/main.o
 OBJECTS :=	obj/file_to_str.o \
-			obj/ll_to_two_d_array.o \
+			obj/ll_to_a_map.o \
+			obj/floodfill.o \
 			obj/tokenize.o \
 			obj/utils.o \
 			obj/validate_input.o \
