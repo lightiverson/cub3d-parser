@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/10/27 11:57:25 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/08 11:10:53 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,23 @@ bool	has_multiple_start_positions(t_map_element *map_element)
 		map_element = map_element->next;
 	}
 	return (false);
+}
+
+int count_columns(t_map_element *map_element)
+{
+	int	number_of_columns;
+	int	x;
+
+	number_of_columns = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP && map_element->map_element)
+		{
+			x = ft_strlen(map_element->map_element);
+			if (x > number_of_columns)
+				number_of_columns = x;
+		}
+		map_element = map_element->next;
+	}
+	return (number_of_columns);
 }

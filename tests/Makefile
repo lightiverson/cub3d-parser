@@ -1,5 +1,6 @@
 NAME :=				../unit_tests
-TEST_OBJECTS :=		obj/test_get_start_pos.o \
+TEST_OBJECTS :=		obj/test_count_columns.o \
+					obj/test_get_start_pos.o \
 					obj/test_tokenizer.o \
 					obj/test_has_multiple_start_positions.o \
 					obj/test_has_start_position.o \
