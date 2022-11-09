@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 15:02:32 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 12:57:27 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,17 @@ enum e_element_types {
 	E_MAP
 };
 
-bool			is_dot_cub_file(char *arg);
+/* tokenize.c */
 t_map_element	*tokenizer(char *file_str);
+
+/* validate_input.c */
+bool			is_dot_cub_file(char *arg);
 bool			is_sorted(t_map_element *map_element);
-bool			has_two_valid_strs(t_map_element *map_element);
+
+/* validate_non_map_elements.c */
+bool			has_four_cardinals(t_map_element *map_element);
+bool			has_two_fcs(t_map_element *map_element);
+bool			has_four_unique_cardinals(t_map_element *map_element);
+bool			has_two_unique_fcs(t_map_element *map_element);
 
 #endif /* tokenize.h */

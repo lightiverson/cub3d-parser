@@ -46,12 +46,12 @@ int main (int argc, char *argv[argc + 1])
 	char			*file_str;
 	t_map_element	*map_element;
 
-	if (argc != 2)
+	if (argc != 2) // Check voor exact 1 arg
 	{
 		printf("Error: Invalid amount of arguments\n");
 		exit(EXIT_FAILURE);
 	}
-	if (!is_dot_cub_file(argv[argc - 1]))
+	if (!is_dot_cub_file(argv[argc - 1])) // Check of arg eindigdt op .cub
 	{
 		printf("Error: Invalid file extension\n");
 		exit(EXIT_FAILURE);
@@ -61,11 +61,44 @@ int main (int argc, char *argv[argc + 1])
 	file_to_str(map_fd, &file_str);
 	printf("file_to_str = |%s|\n", file_str);
 
-	map_element = tokenizer(file_str);
+	map_element = tokenizer(file_str); // Wat als map_element 0 is?
 	print_map_elements(map_element);
-	// wat als map_element 0 is? 
-	// Kan dit? Vast wel? Dit betekend dat er geen tokens zijn,
-	// en dus geen valid characters in de input zitten
+
+	if (!has_four_cardinals(map_element)) // Check voor exact 4 cardinals
+	{
+		printf("Error: not 4 cardinals");
+		exit(EXIT_FAILURE);
+	}
+	if (!has_floor_ceiling(map_element)) // Check voor exact 2 floor ceilings
+	{
+		printf("Error: not 2 floor ceilings");
+		exit(EXIT_FAILURE);
+	}
+	if (!has_three_map_elements_min(map_element)) // Check voor min 2 map elements
+	{
+		printf("Error: less than 3 map elements");
+		exit(EXIT_FAILURE);
+	}
+
+	if (!is_sorted(map_element)) // Check of elementen in de juiste volgorde staan
+	{
+		printf("Error: not sorted correctly");
+		exit(EXIT_FAILURE);
+	}
+
+	if(!has_four_unique_cardinals(map_element)) // Check voor 2 unieke cardinals
+	{
+		printf("Error: not 4 unique cardinals");
+		exit(EXIT_FAILURE);
+	}
+	if (!has_two_unique_fcs(map_element)) // Check voor 2 unieke floor ceilings
+	{
+		printf("Error: not 2 unique floor ceilings");
+		exit(EXIT_FAILURE);
+	}
+
+	// Check voor minimum aantal bytes van een valid map (kleinste paths + kleinste map)
+	// Ga door met map validations
 
 	char **a = ll_to_a_map(map_element, file_str);
 	print_splitted_a(a);

@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 16:04:57 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 12:59:01 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,45 +20,6 @@ static unsigned int	count_ptrs(char **splitted_array)
 	while (splitted_array[i])
 		i++;
 	return (i);
-}
-
-static bool	is_valid_cardinal_fc(char *first_elem)
-{
-	if (
-		!ft_strncmp(first_elem, "NO\0", 3)
-		|| !ft_strncmp(first_elem, "SO\0", 3)
-		|| !ft_strncmp(first_elem, "WE\0", 3)
-		|| !ft_strncmp(first_elem, "EA\0", 3)
-		|| !ft_strncmp(first_elem, "F\0", 3)
-		|| !ft_strncmp(first_elem, "C\0", 3)
-	)
-		return (true);
-	return (false);
-}
-
-bool	has_two_valid_strs(t_map_element *map_element)
-{
-	char	**splitted_array;
-
-	splitted_array = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_CARDINAL
-			|| map_element->type == E_FLOOR_CEILING)
-		{
-			splitted_array = ft_split(map_element->map_element, ' ');
-			if (count_ptrs(splitted_array) != 2)
-			{
-				free_splitted_array(splitted_array);
-				return (false);
-			}
-			else
-				if (!is_valid_cardinal_fc(splitted_array[0]))
-					return (false);
-		}
-		map_element = map_element->next;
-	}
-	return (true);
 }
 
 bool	has_four_cardinals(t_map_element *map_element)
@@ -77,7 +38,7 @@ bool	has_four_cardinals(t_map_element *map_element)
 	return (false);
 }
 
-bool	has_floor_and_ceiling(t_map_element *map_element)
+bool	has_two_fcs(t_map_element *map_element)
 {
 	unsigned int	c;
 
@@ -91,4 +52,78 @@ bool	has_floor_and_ceiling(t_map_element *map_element)
 	if (c == 2)
 		return (true);
 	return (false);
+}
+
+/*
+Moet nog getest worden
+*/
+bool	has_four_unique_cardinals(t_map_element *map_element)
+{
+	bool	has_no;
+	bool	has_so;
+	bool	has_we;
+	bool	has_ea;
+	char	**splitted_array;
+
+	has_no = false;
+	has_so = false;
+	has_we = false;
+	has_ea = false;
+	splitted_array = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_CARDINAL)
+		{
+			splitted_array = ft_split(map_element->map_element, ' ');
+			if (count_ptrs(splitted_array) != 2)
+			{
+				free_splitted_array(splitted_array);
+				return (false);
+			}
+			if (!ft_strncmp(splitted_array[0], "NO\0", 3))
+				has_no = true;
+			else if (!ft_strncmp(splitted_array[0], "SO\0", 3))
+				has_no = true;
+			else if (!ft_strncmp(splitted_array[0], "WE\0", 3))
+				has_no = true;
+			else if (!ft_strncmp(splitted_array[0], "EA\0", 3))
+				has_no = true;
+		}
+		map_element = map_element->next;
+	}
+	free_splitted_array(splitted_array);
+	return (has_no && has_so && has_we && has_ea);
+}
+
+/*
+Moet nog getest worden
+*/
+bool	has_two_unique_fcs(t_map_element *map_element)
+{
+	bool	has_floor;
+	bool	has_ceiling;
+	char	**splitted_array;
+
+	has_floor = false;
+	has_ceiling = false;
+	splitted_array = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_FLOOR_CEILING)
+		{
+			splitted_array = ft_split(map_element->map_element, ' ');
+			if (count_ptrs(splitted_array) != 2)
+			{
+				free_splitted_array(splitted_array);
+				return (false);
+			}
+			if (!ft_strncmp(splitted_array[0], "F\0", 2))
+				has_floor = true;
+			else if (!ft_strncmp(splitted_array[0], "C\0", 2))
+				has_ceiling = true;
+		}
+		map_element = map_element->next;
+	}
+	free_splitted_array(splitted_array);
+	return (has_floor && has_ceiling);
 }

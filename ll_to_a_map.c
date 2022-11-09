@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 17:01:12 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 10:17:32 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ static char	**calloc_a_map(t_map_element *map_element)
 	return (a_map);
 }
 
+/*
+De stap om de map vierkant te maken kan efficienter
+*/
 char	**ll_to_a_map(t_map_element *map_element, char *file_str)
 {
 	unsigned int	i;

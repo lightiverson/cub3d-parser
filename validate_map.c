@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 16:45:34 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 12:41:54 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 The map must be composed of only 6 possible characters: 0 for an empty space,
 1 for a wall, and N,S,E or W for the player’s start position and spawning
 orientation.
+
+Moet nog getest worden
 */
 bool	has_invalid_chars(t_map_element *map_element)
 {
@@ -84,6 +86,9 @@ int	get_map_col_size(t_map_element *map_element)
 	return (map_col_size);
 }
 
+/*
+Moet nog getest worden
+*/
 bool	has_three_map_elements_min(t_map_element *map_element)
 {
 	unsigned int	c;
