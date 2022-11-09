@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 10:17:32 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 17:12:33 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@ int	get_map_size(t_map_element *map_element)
 		map_element = map_element->next;
 	}
 	return (map_size);
+}
+
+int	get_map_col_size(t_map_element *map_element)
+{
+	int	map_col_size;
+	int	x;
+
+	map_col_size = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP && map_element->map_element)
+		{
+			x = ft_strlen(map_element->map_element);
+			if (x > map_col_size)
+				map_col_size = x;
+		}
+		map_element = map_element->next;
+	}
+	printf("map_col_size = %i\n", map_col_size);
+	return (map_col_size);
 }
 
 static char	**calloc_a_map(t_map_element *map_element)

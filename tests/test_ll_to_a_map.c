@@ -21,10 +21,10 @@ Test(to_two_d_array, correct)
 	two_d_a = ll_to_a_map(map_element, file_str);
 
 	map_col_size = get_map_col_size(map_element);
-	cr_assert(eq(int, 4, map_col_size));
+	cr_expect(eq(int, 4, map_col_size));
 
 	map_size = get_map_size(map_element);
-	cr_assert(eq(int, 3, map_size));
+	cr_expect(eq(int, 3, map_size));
 
 	i = 0;
 	j = 0;
@@ -45,4 +45,7 @@ Test(to_two_d_array, correct)
 		j = 0;
 		i++;
 	}
+	free(file_str);
+	free_map_elements(map_element);
+	free_splitted_array(two_d_a);
 }

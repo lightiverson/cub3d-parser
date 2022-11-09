@@ -17,5 +17,8 @@ Test(start_pos, correct)
 	map_element = tokenizer(file_str);
 	two_d_a = ll_to_a_map(map_element, file_str);
 
-	cr_assert(get_start_pos(two_d_a, start_pos));
+	cr_expect(get_start_pos(two_d_a, start_pos));
+	free(file_str);
+	free_map_elements(map_element);
+	free_splitted_array(two_d_a);
 }

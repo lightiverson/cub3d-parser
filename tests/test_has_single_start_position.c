@@ -3,11 +3,17 @@
 #include "../file_to_str.h"
 #include "../validate_map.h"
 
-Test(single_start_position, no_start_position)
+static char			*file_str;
+static t_map_element	*map_element;
+
+static void teardown(void) {
+	free(file_str);
+	free_map_elements(map_element);
+}
+
+Test(single_start_position, no_start_position, .fini = teardown)
 {
 	int				map_fd;
-	char			*file_str;
-	t_map_element	*map_element;
 	bool			b;
 
 	map_fd = get_map_fd("./maps/no_start_position.cub");
@@ -18,11 +24,9 @@ Test(single_start_position, no_start_position)
 	cr_assert(not(b));
 }
 
-Test(single_start_position, one_start_position)
+Test(single_start_position, one_start_position, .fini = teardown)
 {
 	int				map_fd;
-	char			*file_str;
-	t_map_element	*map_element;
 	bool			b;
 
 	map_fd = get_map_fd("./maps/kawish.cub");
@@ -33,11 +37,9 @@ Test(single_start_position, one_start_position)
 	cr_assert(b);
 }
 
-Test(single_start_position, multiple_start_positions)
+Test(single_start_position, multiple_start_positions, .fini = teardown)
 {
 	int				map_fd;
-	char			*file_str;
-	t_map_element	*map_element;
 	bool			b;
 
 	map_fd = get_map_fd("./maps/multiple_start_positions.cub");

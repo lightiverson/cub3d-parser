@@ -15,5 +15,7 @@ Test(is_sorted, simple)
 	map_element = tokenizer(file_str);
 	sorted = is_sorted(map_element);
 
-	cr_assert(sorted);
+	cr_expect(sorted);
+	free(file_str);
+	free_map_elements(map_element);
 }

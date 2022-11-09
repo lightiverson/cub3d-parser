@@ -14,6 +14,8 @@ CUB3D_OBJECTS :=	../obj/file_to_str.o \
 					../obj/validate_input.o \
 					../obj/validate_map.o
 LIBFT :=			../libft
+LDFLAGS ?=
+CFLAGS ?=
 
 all : $(NAME)
 
@@ -22,7 +24,7 @@ $(NAME) : $(TEST_OBJECTS) $(CUB3D_OBJECTS)
 
 obj/%.o : %.c $(header)
 	@mkdir -p $(dir $@)
-	$(CC) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean : 
 	rm -rf obj

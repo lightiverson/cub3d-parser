@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 12:59:01 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 18:35:20 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,15 @@ bool	has_four_unique_cardinals(t_map_element *map_element)
 			if (!ft_strncmp(splitted_array[0], "NO\0", 3))
 				has_no = true;
 			else if (!ft_strncmp(splitted_array[0], "SO\0", 3))
-				has_no = true;
+				has_so = true;
 			else if (!ft_strncmp(splitted_array[0], "WE\0", 3))
-				has_no = true;
+				has_we = true;
 			else if (!ft_strncmp(splitted_array[0], "EA\0", 3))
-				has_no = true;
+				has_ea = true;
+			free_splitted_array(splitted_array);
 		}
 		map_element = map_element->next;
 	}
-	free_splitted_array(splitted_array);
 	return (has_no && has_so && has_we && has_ea);
 }
 
@@ -112,7 +112,7 @@ bool	has_two_unique_fcs(t_map_element *map_element)
 		if (map_element->type == E_FLOOR_CEILING)
 		{
 			splitted_array = ft_split(map_element->map_element, ' ');
-			if (count_ptrs(splitted_array) != 2)
+			if (count_ptrs(splitted_array) != 2) // Moet anders
 			{
 				free_splitted_array(splitted_array);
 				return (false);
@@ -121,9 +121,9 @@ bool	has_two_unique_fcs(t_map_element *map_element)
 				has_floor = true;
 			else if (!ft_strncmp(splitted_array[0], "C\0", 2))
 				has_ceiling = true;
+			free_splitted_array(splitted_array);
 		}
 		map_element = map_element->next;
 	}
-	free_splitted_array(splitted_array);
 	return (has_floor && has_ceiling);
 }

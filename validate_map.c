@@ -6,11 +6,30 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 12:41:54 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/09 17:14:09 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_map.h"
+
+/*
+Moet nog getest worden
+*/
+bool	has_three_map_elements_min(t_map_element *map_element)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP)
+			c++;
+		map_element = map_element->next;
+	}
+	if (c >= 3)
+		return (true);
+	return (false);
+}
 
 /*
 The map must be composed of only 6 possible characters: 0 for an empty space,
@@ -64,43 +83,4 @@ bool	has_single_start_position(t_map_element *map_element)
 	if (encounters != 1)
 		return (false);
 	return (true);
-}
-
-int	get_map_col_size(t_map_element *map_element)
-{
-	int	map_col_size;
-	int	x;
-
-	map_col_size = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_MAP && map_element->map_element)
-		{
-			x = ft_strlen(map_element->map_element);
-			if (x > map_col_size)
-				map_col_size = x;
-		}
-		map_element = map_element->next;
-	}
-	printf("map_col_size = %i\n", map_col_size);
-	return (map_col_size);
-}
-
-/*
-Moet nog getest worden
-*/
-bool	has_three_map_elements_min(t_map_element *map_element)
-{
-	unsigned int	c;
-
-	c = 0;
-	while (map_element)
-	{
-		if (map_element->type == E_MAP)
-			c++;
-		map_element = map_element->next;
-	}
-	if (c >= 3)
-		return (true);
-	return (false);
 }
