@@ -12,8 +12,8 @@ Test(to_two_d_array, correct)
 	char			**two_d_a;
 	int				map_col_size;
 	int				map_size;
-	unsigned int	i;
-	unsigned int	j;
+	int				i;
+	int				j;
 
 	map_fd = get_map_fd("./maps/kleine.cub");
 	file_to_str(map_fd, &file_str);

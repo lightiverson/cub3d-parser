@@ -1,7 +1,9 @@
 NAME :=				../unit_tests
-TEST_OBJECTS :=		obj/test_get_map_col_size.o \
+TEST_OBJECTS :=		obj/get_map_col_size.o \
+					obj/get_map_size.o \
+					obj/has_three_map_elements_min.o \
 					obj/test_get_start_pos.o \
-					obj/test_ll_to_a_map.o \
+					obj/ll_to_a_map.o \
 					obj/test_tokenizer.o \
 					obj/test_has_single_start_position.o \
 					obj/test_is_dot_cube_file.o \
