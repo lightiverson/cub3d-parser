@@ -88,12 +88,15 @@ int main (int argc, char *argv[argc + 1])
 
 	is_valid = true;
 	get_start_pos(a_map, pos);
-	floodfill(a_map, pos[0], pos[1], &is_valid, get_map_size(map_element), get_map_col_size(map_element));
-	if (!is_valid) // Check of map afgesloten is
-	{
-		printf("Map is invalid\n");
-		exit(EXIT_FAILURE);
-	}
+	// floodfill(a_map, pos[0], pos[1], &is_valid, get_map_size(map_element), get_map_col_size(map_element));
+	// if (!is_valid) // Check of map afgesloten is
+	// {
+	// 	printf("Map is invalid\n");
+	// 	exit(EXIT_FAILURE);
+	// }
+	// else
+	// 	printf("Map is valid!\n");
+	itter_floodfill(a_map, pos[0], pos[1], get_map_size(map_element), get_map_col_size(map_element));
 
 	free(file_str);
 	free_map_elements(map_element);

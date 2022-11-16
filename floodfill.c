@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:10:59 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 18:03:31 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 13:33:17 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,87 @@ void	floodfill(char *map[], int row_pos, int col_pos, bool *is_valid, int rows, 
 	floodfill(map, row_pos, col_pos - 1, is_valid, rows, cols);
 	floodfill(map, row_pos - 1, col_pos, is_valid, rows, cols);
 	return;
+}
+
+typedef struct s_stack
+{
+	int	current_row;
+	int	current_col;
+	struct s_stack *next;
+}	t_stack;
+
+/*
+Herschrijf om return en single pointer te gebruiken
+*/
+void	pop(t_stack **stack)
+{
+	*stack = (*stack)->next;
+}
+
+/*
+Herschrijf om return en single pointer te gebruiken
+*/
+void	push(t_stack **stack, int current_row, int current_col)
+{
+	t_stack	*node;
+
+	node = malloc(sizeof(*node));
+	if (!node)
+	{
+		perror("Error: malloc()");
+		exit(EXIT_FAILURE);
+	}
+	node->current_row = current_row;
+	node->current_col = current_col;
+	node->next = *stack;
+	*stack = node;
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+}
+
+void	itter_floodfill(char *map[], int current_row, int current_col, int rows, int cols)
+{
+	t_stack	*stack;
+	t_stack	*node;
+
+	stack = 0;
+	push(&stack, current_row, current_col);
+	map[current_row][current_col] = '0';
+	while (stack)
+	{
+		node = stack;
+		if (node->current_row < 0 || node->current_col < 0 || node->current_row == rows || node->current_col == cols)
+		{
+			printf("Invalid\n");
+			free_stack(stack);
+			return;
+		}
+		if (map[node->current_row][node->current_col] == ' ' || map[node->current_row][node->current_col] == 'X')
+		{
+			printf("Invalid\n");
+			free_stack(stack);
+			return;
+		}
+		pop(&stack);
+		if (map[node->current_row][node->current_col] == '0')
+		{
+			map[node->current_row][node->current_col] = '1';
+			push(&stack, node->current_row - 1, node->current_col);
+			push(&stack, node->current_row, node->current_col + 1);
+			push(&stack, node->current_row + 1, node->current_col);
+			push(&stack, node->current_row, node->current_col - 1);
+		}
+		free(node);
+	}
+	printf("Valid\n");
 }

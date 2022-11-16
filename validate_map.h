@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:29:51 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 18:04:04 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 12:34:23 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ bool	has_three_map_elements_min(t_map_element *map_element);
 /* floodfill.c */
 int		get_start_pos(char **two_d_a, unsigned int start_pos[2]);
 void	floodfill(char *map[], int row_pos, int col_pos, bool *is_valid, int rows, int cols);
+void	itter_floodfill(char *map[], int current_row, int current_col, int rows, int cols);
 
 #endif /* validate_map.h */
