@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 17:12:33 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/11 11:37:55 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	get_map_col_size(t_map_element *map_element)
 		}
 		map_element = map_element->next;
 	}
-	printf("map_col_size = %i\n", map_col_size);
 	return (map_col_size);
 }
 
