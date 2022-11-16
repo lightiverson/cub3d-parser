@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/11 11:37:55 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 19:11:40 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static char	**calloc_a_map(t_map_element *map_element)
 	char	**a_map;
 
 	map_size = get_map_size(map_element);
-	printf("map_size = %i\n", map_size);
 	a_map = ft_calloc(map_size + 1, sizeof(*a_map));
 	if (!a_map)
 		return (0);
@@ -59,9 +58,10 @@ static char	**calloc_a_map(t_map_element *map_element)
 }
 
 /*
-De stap om de map vierkant te maken kan efficienter
+Regel 83 zou weg kunnen. Maar dan zijn de characters
+die de map opvullen om het vierkant te maken '\0' chars
 */
-char	**ll_to_a_map(t_map_element *map_element, char *file_str)
+char	**ll_to_a_map(t_map_element *map_element)
 {
 	unsigned int	i;
 	char			**a_map;
@@ -71,8 +71,6 @@ char	**ll_to_a_map(t_map_element *map_element, char *file_str)
 	a_map = calloc_a_map(map_element);
 	if (!a_map)
 	{
-		free(file_str);
-		free_map_elements(map_element);
 		perror("Error: malloc()");
 		exit(EXIT_FAILURE);
 	}
@@ -83,7 +81,8 @@ char	**ll_to_a_map(t_map_element *map_element, char *file_str)
 		{
 			a_map[i] = ft_calloc(map_col_size + 1, sizeof(*(a_map[i])));
 			ft_memset(a_map[i], 'X', map_col_size);
-			ft_memcpy(a_map[i], map_element->map_element, ft_strlen(map_element->map_element));
+			ft_memcpy(a_map[i], map_element->map_element,
+				ft_strlen(map_element->map_element));
 			i++;
 		}
 		map_element = map_element->next;

@@ -6,11 +6,11 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:58:06 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 10:26:03 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 16:54:13 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_input.h"
+#include "tokenize.h"
 
 /*
 Your program must take as a first argument a scene description file with the .cub

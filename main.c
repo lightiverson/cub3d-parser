@@ -1,7 +1,6 @@
 #include "file_to_str.h"
 #include "libft/libft.h"
 #include "tokenize.h"
-#include "validate_input.h"
 #include "validate_map.h"
 #include "ll_to_a_map.h"
 #include <stdio.h>
@@ -28,10 +27,10 @@ int main (int argc, char *argv[argc + 1])
 	
 	map_fd = get_map_fd(argv[argc - 1]);
 	file_to_str(map_fd, &file_str);
-	printf("file_to_str = |%s|\n", file_str);
+	// printf("file_to_str = |%s|\n", file_str);
 
 	map_element = tokenizer(file_str); // Wat als map_element 0 is?
-	print_map_elements(map_element);
+	// print_map_elements(map_element);
 
 	if (!has_four_cardinals(map_element)) // Check voor exact 4 cardinals
 	{
@@ -78,29 +77,25 @@ int main (int argc, char *argv[argc + 1])
 	}
 
 	// Check voor minimum aantal bytes van een valid map (kleinste paths + kleinste map)
+	// knal een wrapper functie hierom heen -> is_map_closed
 
 	char			**a_map;
-	bool			is_valid;
 	unsigned int	pos[2];
 	
-	a_map = ll_to_a_map(map_element, file_str);
-	print_splitted_a(a_map);
+	a_map = ll_to_a_map(map_element);
+	// print_splitted_a(a_map);
 
-	is_valid = true;
 	get_start_pos(a_map, pos);
-	// floodfill(a_map, pos[0], pos[1], &is_valid, get_map_size(map_element), get_map_col_size(map_element));
-	// if (!is_valid) // Check of map afgesloten is
-	// {
-	// 	printf("Map is invalid\n");
-	// 	exit(EXIT_FAILURE);
-	// }
-	// else
-	// 	printf("Map is valid!\n");
-	itter_floodfill(a_map, pos[0], pos[1], get_map_size(map_element), get_map_col_size(map_element));
+	if (!itter_floodfill(a_map, pos, get_map_size(map_element), get_map_col_size(map_element)))
+	{
+		printf("Map is invalid\n");
+		exit(EXIT_FAILURE);
+	}
 
 	free(file_str);
 	free_map_elements(map_element);
 	free_splitted_array(a_map);
 
+	printf("Map is valid!\n");
 	return (EXIT_SUCCESS);
 }

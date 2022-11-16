@@ -10,6 +10,7 @@ TEST_OBJECTS :=		obj/get_map_col_size.o \
 					obj/test_is_sorted.o
 CUB3D_OBJECTS :=	../obj/file_to_str.o \
 					../obj/floodfill.o \
+					../obj/free_breezy.o \
 					../obj/ll_to_a_map.o \
 					../obj/tokenize.o \
 					../obj/utils.o \

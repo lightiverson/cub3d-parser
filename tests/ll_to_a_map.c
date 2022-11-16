@@ -18,7 +18,7 @@ Test(to_two_d_array, correct)
 	map_fd = get_map_fd("./maps/kleine.cub");
 	file_to_str(map_fd, &file_str);
 	map_element = tokenizer(file_str);
-	two_d_a = ll_to_a_map(map_element, file_str);
+	two_d_a = ll_to_a_map(map_element);
 
 	map_col_size = get_map_col_size(map_element);
 	cr_expect(eq(int, 4, map_col_size));

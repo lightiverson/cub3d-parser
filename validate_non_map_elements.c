@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/11 12:01:00 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 19:04:36 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,10 @@ Moet nog getest worden
 */
 bool	has_four_unique_cardinals(t_map_element *map_element)
 {
-	bool	has_no;
-	bool	has_so;
-	bool	has_we;
-	bool	has_ea;
+	t_data	data;
 	char	**splitted_array;
 
-	has_no = false;
-	has_so = false;
-	has_we = false;
-	has_ea = false;
+	init_data(&data);
 	splitted_array = 0;
 	while (map_element)
 	{
@@ -80,19 +74,12 @@ bool	has_four_unique_cardinals(t_map_element *map_element)
 				free_splitted_array(splitted_array);
 				return (false);
 			}
-			if (!ft_strncmp(splitted_array[0], "NO\0", 3))
-				has_no = true;
-			else if (!ft_strncmp(splitted_array[0], "SO\0", 3))
-				has_so = true;
-			else if (!ft_strncmp(splitted_array[0], "WE\0", 3))
-				has_we = true;
-			else if (!ft_strncmp(splitted_array[0], "EA\0", 3))
-				has_ea = true;
+			helper_cardinals(splitted_array[0], &data);
 			free_splitted_array(splitted_array);
 		}
 		map_element = map_element->next;
 	}
-	return (has_no && has_so && has_we && has_ea);
+	return (data.has_no && data.has_so && data.has_we && data.has_ea);
 }
 
 /*
@@ -106,7 +93,6 @@ bool	has_two_unique_fcs(t_map_element *map_element)
 
 	has_floor = false;
 	has_ceiling = false;
-	splitted_array = 0;
 	while (map_element)
 	{
 		if (map_element->type == E_FLOOR_CEILING)

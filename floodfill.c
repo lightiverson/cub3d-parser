@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:10:59 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 13:33:17 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 16:52:13 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,44 +50,6 @@ int	get_start_pos(char **two_d_a, unsigned int start_pos[2])
 }
 
 /*
-The map must be closed/surrounded by walls, if not the program must return
-an error.
-*/
-void	floodfill(char *map[], int row_pos, int col_pos, bool *is_valid, int rows, int cols)
-{
-	if (!is_valid)
-		return;
-	if (col_pos == cols || row_pos == rows || col_pos < 0 || row_pos < 0)
-	{
-		*is_valid = false;
-		return;
-	}
-	if (map[row_pos][col_pos] == 'X' || map[row_pos][col_pos] == ' ')
-	{
-		*is_valid = false;
-		return;
-	}
-	if (map[row_pos][col_pos] == '1')
-		return;
-	if (map[row_pos][col_pos] == 'N' || map[row_pos][col_pos] == 'E' || map[row_pos][col_pos] == 'S' || map[row_pos][col_pos] == 'W')
-		map[row_pos][col_pos] = '0';
-	if (map[row_pos][col_pos] == '0')
-		map[row_pos][col_pos] = '1';
-	floodfill(map, row_pos, col_pos + 1, is_valid, rows, cols);
-	floodfill(map, row_pos + 1, col_pos, is_valid, rows, cols);
-	floodfill(map, row_pos, col_pos - 1, is_valid, rows, cols);
-	floodfill(map, row_pos - 1, col_pos, is_valid, rows, cols);
-	return;
-}
-
-typedef struct s_stack
-{
-	int	current_row;
-	int	current_col;
-	struct s_stack *next;
-}	t_stack;
-
-/*
 Herschrijf om return en single pointer te gebruiken
 */
 void	pop(t_stack **stack)
@@ -98,7 +60,7 @@ void	pop(t_stack **stack)
 /*
 Herschrijf om return en single pointer te gebruiken
 */
-void	push(t_stack **stack, int current_row, int current_col)
+void	push(t_stack **stack, int cr, int cc)
 {
 	t_stack	*node;
 
@@ -108,57 +70,41 @@ void	push(t_stack **stack, int current_row, int current_col)
 		perror("Error: malloc()");
 		exit(EXIT_FAILURE);
 	}
-	node->current_row = current_row;
-	node->current_col = current_col;
+	node->cr = cr;
+	node->cc = cc;
 	node->next = *stack;
 	*stack = node;
 }
 
-void	free_stack(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	while (stack)
-	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
-	}
-}
-
-void	itter_floodfill(char *map[], int current_row, int current_col, int rows, int cols)
+/*
+The map must be closed/surrounded by walls, if not the program must return
+an error.
+*/
+bool	itter_floodfill(char *map[], unsigned int pos[2], int rows, int cols)
 {
 	t_stack	*stack;
 	t_stack	*node;
 
 	stack = 0;
-	push(&stack, current_row, current_col);
-	map[current_row][current_col] = '0';
+	push(&stack, pos[0], pos[1]);
+	map[pos[0]][pos[1]] = '0';
 	while (stack)
 	{
 		node = stack;
-		if (node->current_row < 0 || node->current_col < 0 || node->current_row == rows || node->current_col == cols)
-		{
-			printf("Invalid\n");
-			free_stack(stack);
-			return;
-		}
-		if (map[node->current_row][node->current_col] == ' ' || map[node->current_row][node->current_col] == 'X')
-		{
-			printf("Invalid\n");
-			free_stack(stack);
-			return;
-		}
+		if (node->cr < 0 || node->cc < 0 || node->cr == rows
+			|| node->cc == cols || map[node->cr][node->cc] == ' '
+			|| map[node->cr][node->cc] == 'X')
+			return (false);
 		pop(&stack);
-		if (map[node->current_row][node->current_col] == '0')
+		if (map[node->cr][node->cc] == '0')
 		{
-			map[node->current_row][node->current_col] = '1';
-			push(&stack, node->current_row - 1, node->current_col);
-			push(&stack, node->current_row, node->current_col + 1);
-			push(&stack, node->current_row + 1, node->current_col);
-			push(&stack, node->current_row, node->current_col - 1);
+			map[node->cr][node->cc] = '1';
+			push(&stack, node->cr - 1, node->cc);
+			push(&stack, node->cr, node->cc + 1);
+			push(&stack, node->cr + 1, node->cc);
+			push(&stack, node->cr, node->cc - 1);
 		}
 		free(node);
 	}
-	printf("Valid\n");
+	return (true);
 }

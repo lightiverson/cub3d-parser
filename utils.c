@@ -6,11 +6,17 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 17:01:43 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/16 19:04:44 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+void	print_exit(char *msg)
+{
+	printf("%s", msg);
+	exit(EXIT_FAILURE);
+}
 
 void	print_map_elements(t_map_element *head)
 {
@@ -34,28 +40,22 @@ void	print_splitted_a(char **split_a)
 	}
 }
 
-void	free_splitted_array(char **splitted_array)
+void	init_data(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (splitted_array[i])
-	{
-		free(splitted_array[i]);
-		i++;
-	}
-	free(splitted_array);
+	data->has_no = false;
+	data->has_so = false;
+	data->has_we = false;
+	data->has_ea = false;
 }
 
-void	free_map_elements(t_map_element *head)
+void	helper_cardinals(char *first_part, t_data *data)
 {
-	t_map_element	*tmp;
-
-	while (head != 0)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp->map_element);
-		free(tmp);
-	}
+	if (!ft_strncmp(first_part, "NO\0", 3))
+		data->has_no = true;
+	else if (!ft_strncmp(first_part, "SO\0", 3))
+		data->has_so = true;
+	else if (!ft_strncmp(first_part, "WE\0", 3))
+		data->has_we = true;
+	else if (!ft_strncmp(first_part, "EA\0", 3))
+		data->has_ea = true;
 }

@@ -3,12 +3,12 @@ HEADERS :=	file_to_str.h \
 			structs.h \
 			tokenize.h \
 			utils.h \
-			validate_input.h \
 			validate_map.h
 MAIN :=		obj/main.o
 OBJECTS :=	obj/file_to_str.o \
 			obj/ll_to_a_map.o \
 			obj/floodfill.o \
+			obj/free_breezy.o \
 			obj/tokenize.o \
 			obj/utils.o \
 			obj/validate_input.o \
@@ -25,7 +25,7 @@ libft:
 	make -C $(LIBFT)
 
 $(NAME) : $(MAIN) $(OBJECTS)
-	$(CC) -o $(NAME) $(MAIN) $(OBJECTS) -L$(LIBFT) -l:libft.a $(LDFLAGS)
+	$(CC) -o $(NAME) $(MAIN) $(OBJECTS) $(LIBFT)/libft.a $(LDFLAGS)
 
 obj/%.o : %.c $(HEADERS)
 	@mkdir -p $(dir $@)
