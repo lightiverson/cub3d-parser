@@ -43,7 +43,7 @@ int main (int argc, char *argv[argc + 1])
 		printf("Error: not 2 floor ceilings\n");
 		exit(EXIT_FAILURE);
 	}
-	if (!has_three_map_elements_min(map_element)) // Check voor min 2 map elements
+	if (!has_three_map_elements_min(map_element)) // Check voor min 3 map elements
 	{
 		printf("Error: less than 3 map elements\n");
 		exit(EXIT_FAILURE);
@@ -55,14 +55,14 @@ int main (int argc, char *argv[argc + 1])
 		exit(EXIT_FAILURE);
 	}
 
-	if(!has_four_unique_cardinals(map_element)) // Check voor 2 unieke cardinals
+	if(!has_four_unique_cardinals(map_element)) // Check voor 4 unieke cardinals
 	{
-		printf("Error: not 4 unique cardinals\n");
+		printf("Error: not 4 unique cardinals or valid cardinals\n");
 		exit(EXIT_FAILURE);
 	}
 	if (!has_two_unique_fcs(map_element)) // Check voor 2 unieke floor ceilings
 	{
-		printf("Error: not 2 unique floor ceilings\n");
+		printf("Error: not 2 unique floor ceilings or valid floor ceilings\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -71,9 +71,9 @@ int main (int argc, char *argv[argc + 1])
 		printf("Error: map contains invalid chars\n");
 		exit(EXIT_FAILURE);
 	}
-	if (has_single_start_position(map_element)) // Check voor exact 1 start positie
+	if (!has_single_start_position(map_element)) // Check voor exact 1 start positie
 	{
-		printf("Error: not 1 start position");
+		printf("Error: not 1 start position\n");
 		exit(EXIT_FAILURE);
 	}
 

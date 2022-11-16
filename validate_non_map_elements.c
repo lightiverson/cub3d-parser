@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 18:35:20 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/11 12:01:00 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ bool	has_two_unique_fcs(t_map_element *map_element)
 		if (map_element->type == E_FLOOR_CEILING)
 		{
 			splitted_array = ft_split(map_element->map_element, ' ');
-			if (count_ptrs(splitted_array) != 2) // Moet anders
+			if (!splitted_array)
 			{
-				free_splitted_array(splitted_array);
-				return (false);
+				perror("Error: malloc()");
+				exit(EXIT_FAILURE);
 			}
 			if (!ft_strncmp(splitted_array[0], "F\0", 2))
 				has_floor = true;

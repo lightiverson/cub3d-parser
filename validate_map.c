@@ -6,15 +6,12 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/09 17:14:09 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/11 12:07:56 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_map.h"
 
-/*
-Moet nog getest worden
-*/
 bool	has_three_map_elements_min(t_map_element *map_element)
 {
 	unsigned int	c;
@@ -49,8 +46,8 @@ bool	has_invalid_chars(t_map_element *map_element)
 			dup = map_element->map_element;
 			while (*dup)
 			{
-				if (*dup != ' ' || *dup != '0' || *dup != '1' || *dup != 'N'
-					|| *dup != 'S' || *dup != 'E' || *dup != 'W')
+				if (*dup != ' ' && *dup != '0' && *dup != '1' && *dup != 'N'
+					&& *dup != 'S' && *dup != 'E' && *dup != 'W')
 					return (true);
 				dup++;
 			}
