@@ -1,15 +1,21 @@
 NAME := cub3d
 HEADERS :=	file_to_str.h \
+			ft_strtol.h \
+			ll_to_a_map.h \
+			parse_floor_ceiling.h \
 			structs.h \
 			tokenize.h \
 			utils.h \
 			validate_map.h
 MAIN :=		obj/main.o
 OBJECTS :=	obj/file_to_str.o \
-			obj/ll_to_a_map.o \
 			obj/floodfill.o \
 			obj/free_breezy.o \
+			obj/ft_strtol.o \
+			obj/ll_to_a_map.o \
+			obj/parse_floor_ceiling.o \
 			obj/tokenize.o \
+			obj/utils_ft_strtol.o \
 			obj/utils.o \
 			obj/validate_input.o \
 			obj/validate_map.o \

@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 11:59:48 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/17 13:54:53 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ more empty line(s).
 t_map_element	*tokenizer(char *file_str)
 {
 	char			**split_a;
-	unsigned int	i;
+	int				i;
 	t_map_element	*map_elements;
 
 	split_a = ft_split(file_str, '\n');

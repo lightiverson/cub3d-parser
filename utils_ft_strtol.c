@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ll_to_a_map.h                                      :+:    :+:            */
+/*   utils_ft_strtol.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/03 11:46:09 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:17:51 by kgajadie      ########   odam.nl         */
+/*   Created: 2022/11/22 16:07:42 by kgajadie      #+#    #+#                 */
+/*   Updated: 2022/11/22 18:03:39 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LL_TO_A_MAP_H
-# define LL_TO_A_MAP_H
+#include "ft_strtol.h"
 
-/* Private libraries */
-# include "tokenize.h"
-# include "structs.h"
-# include "validate_map.h"
+t_data	*init_data(const char *nptr)
+{
+	t_data	*data;
 
-int		get_map_size(t_map_element *map_element);
-int		get_map_col_size(t_map_element *map_element);
-char	**ll_to_a_map(t_map_element *map_element);
-
-#endif /* ll_to_a_map.h */
+	data = malloc(sizeof(*data));
+	if (!data)
+		exit(1);
+	data->s = nptr;
+	data->neg = 0;
+	data->cutoff = LONG_MAX;
+	data->acc = 0;
+	data->any = 0;
+	return (data);
+}

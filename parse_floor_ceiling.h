@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ll_to_a_map.h                                      :+:    :+:            */
+/*   parse_floor_ceiling.h                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/03 11:46:09 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:17:51 by kgajadie      ########   odam.nl         */
+/*   Created: 2022/11/22 16:58:09 by kgajadie      #+#    #+#                 */
+/*   Updated: 2022/11/22 17:44:08 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LL_TO_A_MAP_H
-# define LL_TO_A_MAP_H
+#ifndef PARSE_FLOOR_CEILING_H
+# define PARSE_FLOOR_CEILING_H
 
-/* Private libraries */
+
+/* public libraries */
+# include <string.h>
+# include <ctype.h>
+# include <stdio.h>
+# include <limits.h>
+# include <errno.h>
+
+/* private libraries */
+# include "libft/libft.h"
 # include "tokenize.h"
 # include "structs.h"
-# include "validate_map.h"
+# include "ft_strtol.h"
 
-int		get_map_size(t_map_element *map_element);
-int		get_map_col_size(t_map_element *map_element);
-char	**ll_to_a_map(t_map_element *map_element);
+int strip_spaces(char *s);
+void alpha(char *str);
 
-#endif /* ll_to_a_map.h */
+#endif

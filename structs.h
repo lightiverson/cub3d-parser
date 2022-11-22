@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 19:01:52 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/22 17:33:04 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 /* Public libraries */
 # include <stdbool.h>
+
+typedef struct s_data
+{
+	const char	*s;
+	long		acc;
+	long		cutoff;
+	int			c;
+	int			neg;
+	int			any;
+	int			cutlim;
+}	t_data;
 
 typedef struct s_map_element {
 	char					*map_element;
@@ -28,11 +39,25 @@ typedef struct s_stack {
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_data {
+typedef struct s_has_c {
 	bool	has_no;
 	bool	has_so;
 	bool	has_we;
 	bool	has_ea;
-}	t_data;
+}	t_has_c;
+
+typedef struct s_rgb
+{
+	int r;
+	int g;
+	int b;
+}	t_rgb;
+
+typedef struct s_cub {
+	int		rows;
+	int		cols;
+	int		start_pos[2];
+	char	**map;
+}	t_cub;
 
 #endif

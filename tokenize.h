@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 19:01:38 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/22 11:12:50 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ bool			is_dot_cub_file(char *arg);
 bool			is_sorted(t_map_element *map_element);
 
 /* validate_non_map_elements.c */
+int				count_ptrs(char **splitted_array);
 bool			has_four_cardinals(t_map_element *map_element);
 bool			has_two_fcs(t_map_element *map_element);
 bool			has_four_unique_cardinals(t_map_element *map_element);

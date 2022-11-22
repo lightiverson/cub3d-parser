@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 19:04:44 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/22 17:37:42 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_map_elements(t_map_element *head)
 
 void	print_splitted_a(char **split_a)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (split_a[i])
@@ -40,7 +40,7 @@ void	print_splitted_a(char **split_a)
 	}
 }
 
-void	init_data(t_data *data)
+void	init_has_c(t_has_c *data)
 {
 	data->has_no = false;
 	data->has_so = false;
@@ -48,7 +48,7 @@ void	init_data(t_data *data)
 	data->has_ea = false;
 }
 
-void	helper_cardinals(char *first_part, t_data *data)
+void	helper_cardinals(char *first_part, t_has_c *data)
 {
 	if (!ft_strncmp(first_part, "NO\0", 3))
 		data->has_no = true;

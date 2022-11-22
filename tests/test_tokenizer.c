@@ -5,7 +5,7 @@
 
 Test(tokenizer, kawish_cub)
 {
-	unsigned int	i;
+	int	i;
 	int				map_fd;
 	char			*file_str;
 	t_map_element	*map_element;
@@ -51,7 +51,7 @@ Test(tokenizer, kawish_cub)
 
 // Test(tokenizer, trip_cub)
 // {
-// 	unsigned int	i;
+// 	int	i;
 // 	int				map_fd;
 // 	char			*file_str;
 // 	t_map_element	*lst;

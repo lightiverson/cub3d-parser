@@ -6,15 +6,15 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 19:04:36 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/22 17:37:42 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize.h"
 
-static unsigned int	count_ptrs(char **splitted_array)
+int	count_ptrs(char **splitted_array)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (splitted_array[i])
@@ -24,7 +24,7 @@ static unsigned int	count_ptrs(char **splitted_array)
 
 bool	has_four_cardinals(t_map_element *map_element)
 {
-	unsigned int	c;
+	int	c;
 
 	c = 0;
 	while (map_element)
@@ -40,7 +40,7 @@ bool	has_four_cardinals(t_map_element *map_element)
 
 bool	has_two_fcs(t_map_element *map_element)
 {
-	unsigned int	c;
+	int	c;
 
 	c = 0;
 	while (map_element)
@@ -59,10 +59,10 @@ Moet nog getest worden
 */
 bool	has_four_unique_cardinals(t_map_element *map_element)
 {
-	t_data	data;
+	t_has_c	data;
 	char	**splitted_array;
 
-	init_data(&data);
+	init_has_c(&data);
 	splitted_array = 0;
 	while (map_element)
 	{

@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 19:11:40 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/17 11:51:34 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ die de map opvullen om het vierkant te maken '\0' chars
 */
 char	**ll_to_a_map(t_map_element *map_element)
 {
-	unsigned int	i;
-	char			**a_map;
-	int				map_col_size;
+	int		i;
+	char	**a_map;
+	int		map_col_size;
 
 	i = 0;
 	a_map = calloc_a_map(map_element);

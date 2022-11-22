@@ -10,7 +10,7 @@ Test(start_pos, correct)
 	char			*file_str;
 	t_map_element	*map_element;
 	char			**two_d_a;
-	unsigned int	start_pos[2];
+	int	start_pos[2];
 
 	map_fd = get_map_fd("./maps/kawish.cub");
 	file_to_str(map_fd, &file_str);

@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/11 12:07:56 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/17 11:50:12 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	has_three_map_elements_min(t_map_element *map_element)
 {
-	unsigned int	c;
+	int	c;
 
 	c = 0;
 	while (map_element)
