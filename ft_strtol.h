@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 16:05:10 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:36:19 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/24 10:38:34 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "structs.h"
 
 /* utils_ft_strtol.c */
-t_data	*init_data(const char *nptr);
+void	init_data(t_data *data, const char *nptr);
 
 /* ft_strtol.c */
 long	ft_strtol(const char *nptr, char **endptr);

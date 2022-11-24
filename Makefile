@@ -12,10 +12,10 @@ OBJECTS :=	obj/file_to_str.o \
 			obj/floodfill.o \
 			obj/free_breezy.o \
 			obj/ft_strtol.o \
+			obj/ft_strtol_utils.o \
 			obj/ll_to_a_map.o \
 			obj/parse_floor_ceiling.o \
 			obj/tokenize.o \
-			obj/utils_ft_strtol.o \
 			obj/utils.o \
 			obj/validate_input.o \
 			obj/validate_map.o \

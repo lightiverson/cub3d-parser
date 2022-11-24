@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 14:57:40 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 18:14:25 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/24 10:48:44 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,37 +74,31 @@ static void	set_cutoff_cutlim(t_data *data)
 	}
 }
 
-/*
-zet de struct om naar echt een struct ipv pointer en loes malloc
-*/
 long	ft_strtol(const char *nptr, char **endptr)
 {
-	t_data	*data;
-	long l;
+	t_data	data;
 
-	data = init_data(nptr);
-	while (isspace(*(data->s)))
-		data->s++;
-	if (*(data->s) == '-')
+	init_data(&data, nptr);
+	while (isspace(*(data.s)))
+		data.s++;
+	if (*(data.s) == '-')
 	{
-		data->neg = 1;
-		data->s++;
+		data.neg = 1;
+		data.s++;
 	}
-	set_cutoff_cutlim(data);
-	while (isdigit((unsigned char) *(data->s)))
+	set_cutoff_cutlim(&data);
+	while (isdigit((unsigned char) *(data.s)))
 	{
-		data->c = (unsigned char) *(data->s) - '0';
-		data->s++;
-		if (data->any < 0)
+		data.c = (unsigned char) *(data.s) - '0';
+		data.s++;
+		if (data.any < 0)
 			continue ;
-		if (data->neg)
-			handle_neg(data);
+		if (data.neg)
+			handle_neg(&data);
 		else
-			handle_pos(data);
+			handle_pos(&data);
 	}
-	data->s++;
-	handle_endptr(data, endptr, nptr);
-	l = data->acc;
-	free(data);
-	return (l);
+	data.s++;
+	handle_endptr(&data, endptr, nptr);
+	return (data.acc);
 }
