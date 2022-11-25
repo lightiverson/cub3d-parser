@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 16:57:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 13:02:01 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 14:51:42 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ t_rgb	build_rgb(char *str)
 	rgb.g = convert_to_int(splitted_array[1]);
 	rgb.b = convert_to_int(splitted_array[2]);
 	free_splitted_array(splitted_array);
-	print_rgb(&rgb);
 	return (rgb);
 }
 

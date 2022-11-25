@@ -6,11 +6,25 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:25:26 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 15:02:24 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+void	print_cub(t_cub *cub)
+{
+	printf("cub\n");
+	printf("{\n");
+	printf("\trows = \t\t%i\n", cub->rows);
+	printf("\tcols = \t\t%i\n", cub->cols);
+	printf("\tstart_pos = \t[%i, %i]\n", cub->start_pos[0], cub->start_pos[1]);
+	printf("\tmap = \t\t%p\n", cub->map);
+	printf("\tfloor = \t{\n");
+	print_rgb(&(cub->floor));
+	printf("\tceiling = \t{\n");
+	print_rgb(&(cub->ceiling));
+}
 
 void	print_exit(char *msg)
 {
@@ -42,7 +56,11 @@ void	print_splitted_a(char **split_a)
 
 void	print_rgb(t_rgb *rgb)
 {
-	printf("rgb\n{\n\tr\t=\t%i\n\tg\t=\t%i\n\tb\t=\t%i\n}\n", rgb->r, rgb->g, rgb->b);
+	// printf("rgb\n{\n\tr\t=\t%i\n\tg\t=\t%i\n\tb\t=\t%i\n}\n", rgb->r, rgb->g, rgb->b);
+	printf("\t\t\t\tr = \t%i\n", rgb->r);
+	printf("\t\t\t\tg = \t%i\n", rgb->g);
+	printf("\t\t\t\tb = \t%i\n", rgb->b);
+	printf("\t\t\t}\n");
 }
 
 void	init_has_c(t_has_c *data)

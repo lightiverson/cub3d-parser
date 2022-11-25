@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 13:04:48 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 14:31:40 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,23 @@ typedef struct s_data
 	int			cutlim;
 }	t_data;
 
-typedef struct s_map_element {
+typedef struct s_map_element
+{
 	char					*map_element;
 	int						type;
 	int						sub_type;
 	struct s_map_element	*next;
 }	t_map_element;
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int				cr;
 	int				cc;
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_has_c {
+typedef struct s_has_c
+{
 	bool	has_no;
 	bool	has_so;
 	bool	has_we;
@@ -54,7 +57,8 @@ typedef struct s_rgb
 	int	b;
 }	t_rgb;
 
-typedef struct s_cub {
+typedef struct s_cub
+{
 	int		rows;
 	int		cols;
 	int		start_pos[2];

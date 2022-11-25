@@ -36,8 +36,7 @@ int main (int argc, char *argv[argc + 1])
 		print_exit("Error: Invalid file extension\n");
 
 	map_element = tokenizer(argv[argc - 1]); // Wat als map_element 0 is?
-	print_map_elements(map_element);
-	free_map_elements(map_element);
+	// print_map_elements(map_element);
 
 	// if (!has_four_cardinals(map_element)) // Check voor exact 4 cardinals
 	// {
@@ -84,34 +83,16 @@ int main (int argc, char *argv[argc + 1])
 	// }
 	// // Check voor minimum aantal bytes van een valid map (kleinste paths + kleinste map)
 
-	// cub = malloc(sizeof(*cub));
-	// if (!cub)
-	// {
-	// 	perror("Error: malloc()");
-	// 	exit(EXIT_FAILURE);
-	// }
-	// cub->rows = get_map_size(map_element);
-	// cub->cols = get_map_col_size(map_element);
-	// cub->map = ll_to_a_map(map_element);
-	// // print_splitted_a(cub->map);
-
-	// free_map_elements(map_element);
-
-	// get_start_pos(cub->map, cub->start_pos);
-	// if (!itter_floodfill(cub->map, cub->start_pos, cub->rows, cub->cols))
-	// {
-	// 	printf("Map is invalid\n");
-	// 	exit(EXIT_FAILURE);
-	// }
-
-	// free_splitted_array(cub->map);
-
-	// printf("Map is valid!\n");
+	cub = parser(map_element);
+	free_map_elements(map_element);
+	print_cub(cub);
 
 	// char *s = strdup("   F   2 2 0 , 1 0  0  ,   0   ");
 	// strip_spaces(s);
 	// printf("|%s|\n", s);
 	// build_rgb(s);
 	// free(s);
+
+	printf("Map is valid!\n");
 	return (EXIT_SUCCESS);
 }
