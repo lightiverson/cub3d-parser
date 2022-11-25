@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:22:43 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 13:14:09 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int				get_map_fd(const char *map_name);
 int				file_to_str(int fd, char **file_str);
 
 /* tokenize.c */
-t_map_element	*tokenizer(char *file_str);
+t_map_element	*tokenizer(const char *map_name);
 
 #endif /* tokenize.h */

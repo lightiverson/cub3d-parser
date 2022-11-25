@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 16:57:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:21:06 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 13:02:01 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	convert_to_int(char *str)
 /*
 Je hoeft helemaal niet te mallocen. return gewoon de stuct.
 */
-t_rgb	*build_rgb(char *str)
+t_rgb	build_rgb(char *str)
 {
 	char	**splitted_array;
-	t_rgb	*rgb;
+	t_rgb	rgb;
 
 	if (*str != 'F' && *str != 'C')
 		print_exit("Error: invalid floor ceiling string\n");
@@ -77,18 +77,15 @@ t_rgb	*build_rgb(char *str)
 		print_exit("Error: malloc failed");
 	if (count_ptrs(splitted_array) != 3)
 		print_exit("Error: invalid floor ceiling string\n");
-	rgb = malloc(sizeof(*rgb));
-	if (!rgb)
-		print_exit("Error: malloc failed\n");
-	rgb->r = convert_to_int(splitted_array[0]);
-	rgb->g = convert_to_int(splitted_array[1]);
-	rgb->b = convert_to_int(splitted_array[2]);
+	rgb.r = convert_to_int(splitted_array[0]);
+	rgb.g = convert_to_int(splitted_array[1]);
+	rgb.b = convert_to_int(splitted_array[2]);
 	free_splitted_array(splitted_array);
-	print_rgb(rgb);
+	print_rgb(&rgb);
 	return (rgb);
 }
 
-t_rgb	*parse_floor_ceiling(t_map_element *map_element, int sub_type)
+t_rgb	parse_floor_ceiling(t_map_element *map_element, int sub_type)
 {
 	while (map_element)
 	{

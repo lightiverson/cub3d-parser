@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/25 10:58:14 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:12:10 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 13:02:03 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_cub	*parser(t_map_element *map_element);
 
 /* parse_floor_ceiling.c */
 int		strip_spaces(char *s);
-t_rgb	*parse_floor_ceiling(t_map_element *map_element, int sub_type);
+t_rgb	build_rgb(char *str);
+t_rgb	parse_floor_ceiling(t_map_element *map_element, int sub_type);
 
 #endif

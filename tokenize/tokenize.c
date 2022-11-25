@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:22:15 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 13:16:16 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,20 @@ static void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
 Except for the map content, each type of element can be separated by one or
 more empty line(s).
 */
-t_map_element	*tokenizer(char *file_str)
+t_map_element	*tokenizer(const char *map_name)
 {
+	int				map_fd;
+	char			*file_str;
 	char			**split_a;
 	int				i;
 	t_map_element	*map_elements;
 
+	map_fd = get_map_fd(map_name);
+	file_to_str(map_fd, &file_str);
+	// printf("file_to_str = |%s|\n", file_str);
 	split_a = ft_split(file_str, '\n');
 	if (!split_a)
-	{
-		perror("Error: ft_split()\n");
-		exit(EXIT_FAILURE);
-	}
+		print_exit("Error: ft_split()\n");
 	i = 0;
 	map_elements = 0;
 	while (split_a[i])
@@ -105,5 +107,6 @@ t_map_element	*tokenizer(char *file_str)
 		i++;
 	}
 	free_splitted_array(split_a);
+	free(file_str);
 	return (map_elements);
 }
