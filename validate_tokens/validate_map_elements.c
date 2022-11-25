@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   validate_map.c                                     :+:    :+:            */
+/*   validate_map_elements.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/17 11:50:12 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/24 13:10:05 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_map.h"
+#include "validate_tokens.h"
+
+/*
+Except for the map content which always has to be the last, each type of
+element can be set in any order in the file.
+*/
+bool	is_sorted(t_map_element *map_element)
+{
+	bool	has_encountered_type_three;
+
+	has_encountered_type_three = false;
+	while (map_element)
+	{
+		if (map_element->type == E_MAP)
+			has_encountered_type_three = true;
+		if (has_encountered_type_three && map_element->type < E_MAP)
+			return (false);
+		map_element = map_element->next;
+	}
+	return (true);
+}
 
 bool	has_three_map_elements_min(t_map_element *map_element)
 {

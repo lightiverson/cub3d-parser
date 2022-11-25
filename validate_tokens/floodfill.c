@@ -6,11 +6,11 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:10:59 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/17 11:47:27 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 10:50:24 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_map.h"
+#include "validate_tokens.h"
 
 static bool	is_start_pos(char c)
 {
@@ -52,7 +52,7 @@ int	get_start_pos(char **two_d_a, int start_pos[2])
 /*
 Herschrijf om return en single pointer te gebruiken
 */
-void	pop(t_stack **stack)
+static void	pop(t_stack **stack)
 {
 	*stack = (*stack)->next;
 }
@@ -60,7 +60,7 @@ void	pop(t_stack **stack)
 /*
 Herschrijf om return en single pointer te gebruiken
 */
-void	push(t_stack **stack, int cr, int cc)
+static void	push(t_stack **stack, int cr, int cc)
 {
 	t_stack	*node;
 

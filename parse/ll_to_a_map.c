@@ -6,11 +6,11 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/17 11:51:34 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 12:00:14 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ll_to_a_map.h"
+#include "parse.h"
 
 int	get_map_size(t_map_element *map_element)
 {

@@ -6,11 +6,11 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:56:56 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/08 16:07:16 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 12:00:29 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file_to_str.h"
+#include "tokenize.h"
 
 int	get_map_fd(const char *map_name)
 {

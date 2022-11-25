@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:37:42 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 12:25:26 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	print_splitted_a(char **split_a)
 	}
 }
 
+void	print_rgb(t_rgb *rgb)
+{
+	printf("rgb\n{\n\tr\t=\t%i\n\tg\t=\t%i\n\tb\t=\t%i\n}\n", rgb->r, rgb->g, rgb->b);
+}
+
 void	init_has_c(t_has_c *data)
 {
 	data->has_no = false;
@@ -48,14 +53,12 @@ void	init_has_c(t_has_c *data)
 	data->has_ea = false;
 }
 
-void	helper_cardinals(char *first_part, t_has_c *data)
+int	count_ptrs(char **splitted_array)
 {
-	if (!ft_strncmp(first_part, "NO\0", 3))
-		data->has_no = true;
-	else if (!ft_strncmp(first_part, "SO\0", 3))
-		data->has_so = true;
-	else if (!ft_strncmp(first_part, "WE\0", 3))
-		data->has_we = true;
-	else if (!ft_strncmp(first_part, "EA\0", 3))
-		data->has_ea = true;
+	int	i;
+
+	i = 0;
+	while (splitted_array[i])
+		i++;
+	return (i);
 }

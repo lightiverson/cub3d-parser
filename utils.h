@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:37:42 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 12:04:31 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 
 /* Private libraries */
 # include "structs.h"
-# include "tokenize.h"
+# include "tokenize/tokenize.h"
 
 /* utils.c */
 void	print_map_elements(t_map_element *head);
 void	print_splitted_a(char **split_a);
 void	print_exit(char *msg);
+void	print_rgb(t_rgb *rgb);
 void	init_has_c(t_has_c *data);
-void	helper_cardinals(char *first_part, t_has_c *data);
+int		count_ptrs(char **splitted_array);
 
 /* free_breezy.c */
 void	free_map_elements(t_map_element *head);

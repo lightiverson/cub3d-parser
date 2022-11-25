@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/24 12:52:33 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/25 10:37:35 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 typedef struct s_map_element {
 	char					*map_element;
 	int						type;
+	int						sub_type;
 	struct s_map_element	*next;
 }	t_map_element;
 

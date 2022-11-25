@@ -1,29 +1,30 @@
-NAME := cub3d
-HEADERS :=	file_to_str.h \
-			ft_strtol.h \
-			ll_to_a_map.h \
-			parse_floor_ceiling.h \
-			structs.h \
+NAME :=		cub3d
+VPATH :=	parse:\
+			tokenize:\
+			validate_tokens
+HEADERS :=	parse.h \
 			tokenize.h \
-			utils.h \
-			validate_map.h
+			validate_tokens.h \
+			ft_strtol.h \
+			structs.h \
+			utils.h
 MAIN :=		obj/main.o
-OBJECTS :=	obj/file_to_str.o \
-			obj/floodfill.o \
-			obj/free_breezy.o \
-			obj/ft_strtol.o \
-			obj/ft_strtol_utils.o \
-			obj/ll_to_a_map.o \
+OBJECTS :=	obj/ll_to_a_map.o \
 			obj/parse_floor_ceiling.o \
+			obj/parse.o \
+			obj/file_to_str.o \
 			obj/tokenize.o \
-			obj/utils.o \
-			obj/validate_input.o \
-			obj/validate_map.o \
-			obj/validate_non_map_elements.o
+			obj/floodfill.o \
+			obj/validate_map_elements.o \
+			obj/validate_non_map_elements.o \
+			obj/free_breezy.o \
+			obj/ft_strtol_utils.o \
+			obj/ft_strtol.o \
+			obj/utils.o
 LDFLAGS ?=
 CFLAGS ?=	-Wall -Wextra -Werror
 LIBFT :=	./libft
-UTESTS := tests
+UTESTS :=	tests
 
 all : libft $(NAME)
 

@@ -6,21 +6,11 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 17:18:26 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:37:42 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/24 13:22:58 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenize.h"
-
-int	count_ptrs(char **splitted_array)
-{
-	int	i;
-
-	i = 0;
-	while (splitted_array[i])
-		i++;
-	return (i);
-}
+#include "validate_tokens.h"
 
 bool	has_four_cardinals(t_map_element *map_element)
 {
@@ -52,6 +42,18 @@ bool	has_two_fcs(t_map_element *map_element)
 	if (c == 2)
 		return (true);
 	return (false);
+}
+
+static void	helper_cardinals(char *first_part, t_has_c *data)
+{
+	if (!ft_strncmp(first_part, "NO\0", 3))
+		data->has_no = true;
+	else if (!ft_strncmp(first_part, "SO\0", 3))
+		data->has_so = true;
+	else if (!ft_strncmp(first_part, "WE\0", 3))
+		data->has_we = true;
+	else if (!ft_strncmp(first_part, "EA\0", 3))
+		data->has_ea = true;
 }
 
 /*
