@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_breezy.c                                      :+:    :+:            */
+/*   prints.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 18:37:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 15:02:12 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 16:09:36 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	print_cub(t_cub *cub)
 	printf("}\n");
 }
 
-void	print_exit(char *msg)
+void	put_exit_fail(char *msg)
 {
-	printf("%s", msg);
+	ft_putstr_fd(msg, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

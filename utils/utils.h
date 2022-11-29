@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 15:26:15 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 16:09:36 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /* utils.c */
 void	print_map_elements(t_map_element *head);
 void	print_splitted_a(char **split_a);
-void	print_exit(char *msg);
+void	put_exit_fail(char *msg);
 void	print_rgb(t_rgb *rgb);
 int		count_ptrs(char **splitted_array);
 void	print_cub(t_cub *cub);
