@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:10:59 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 10:50:24 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:26:32 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ bool	itter_floodfill(char *map[], int pos[2], int rows, int cols)
 		if (node->cr < 0 || node->cc < 0 || node->cr == rows
 			|| node->cc == cols || map[node->cr][node->cc] == ' '
 			|| map[node->cr][node->cc] == 'X')
-			return (false);
+			return (free_stack(stack));
 		pop(&stack);
 		if (map[node->cr][node->cc] == '0')
 		{
