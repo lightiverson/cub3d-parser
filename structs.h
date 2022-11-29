@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:07:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 14:31:40 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 13:40:08 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ typedef struct s_cub
 {
 	int		rows;
 	int		cols;
-	int		start_pos[2];
 	char	**map;
+	int		start_pos[2];
+	char	**no_path;
+	char	**so_path;
+	char	**we_path;
+	char	**ea_path;
 	t_rgb	floor;
 	t_rgb	ceiling;
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
 }	t_cub;
 
 #endif
