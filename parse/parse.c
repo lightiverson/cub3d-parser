@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_floor_ceiling.c                              :+:    :+:            */
+/*   parse.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 16:57:43 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 14:45:28 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:53:27 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ int	convert_to_int(char *str)
 	char	*endptr;
 	long	val;
 
-	errno = 0; /* To distinguish success/failure after call */
+	errno = 0;
 	val = ft_strtol(str, &endptr);
-	if (errno != 0) /* Check for various possible errors */
+	if (errno != 0)
 	{
-		perror("strtol");
+		perror("Error: strtol()");
 		exit(EXIT_FAILURE);
 	}
 	if (endptr == str)
 		print_exit("Error: no digits were found\n");
-	if (*endptr != '\0') /* If we got here, strtol() successfully parsed a number */ /* Not necessarily an error... */
+	if (*endptr != '\0')
 	{
 		printf("Error: found characters after number: \"%s\"\n", endptr);
 		exit(EXIT_FAILURE);
@@ -100,6 +100,7 @@ t_rgb	parse_floor_ceiling(t_map_element *map_element, int sub_type)
 char	**parse_cordinal(t_map_element *map_element, int sub_type)
 {
 	char	**splitted_array;
+
 	while (map_element)
 	{
 		if (map_element->sub_type == sub_type)

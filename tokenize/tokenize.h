@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 15:15:42 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:53:53 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ enum e_sub_type {
 };
 
 /* file_to_str.c */
-int				get_map_fd(const char *map_name);
-int				file_to_str(int fd, char **file_str);
+int		get_map_fd(const char *map_name);
+int		file_to_str(int fd, char **file_str);
 
 /* tokenize.c */
 void	inner_tokenizer(char *split_a_i, t_map_element **map_elements);
