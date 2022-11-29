@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 13:16:16 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 11:13:57 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ t_map_element	*tokenizer(const char *map_name)
 
 	map_fd = get_map_fd(map_name);
 	file_to_str(map_fd, &file_str);
-	// printf("file_to_str = |%s|\n", file_str);
 	split_a = ft_split(file_str, '\n');
 	if (!split_a)
 		print_exit("Error: ft_split()\n");
