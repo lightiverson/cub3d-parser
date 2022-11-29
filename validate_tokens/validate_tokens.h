@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/25 12:23:01 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:23:02 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 14:55:19 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # include "../tokenize/tokenize.h"
 
 /* floodfill.c */
-bool	itter_floodfill(char *map[], int pos[2], int rows, int cols);
 int		get_start_pos(char **two_d_a, int start_pos[2]);
+bool	itter_floodfill(char *map[], int pos[2], int rows, int cols);
 
 /* validate_map_elements.c */
+void	init_has_c(t_has_c *data);
 bool	is_sorted(t_map_element *map_element);
 bool	has_three_map_elements_min(t_map_element *map_element);
 bool	has_invalid_chars(t_map_element *map_element);

@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 11:13:57 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:15:55 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	tokenize_map_element(char *input_elem, int type,
 	map_elements_add_back(lst, node);
 }
 
-static void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
+void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
 {
 	if (ft_strnstr(split_a_i, "NO ", ft_strlen(split_a_i)))
 		tokenize_map_element(split_a_i, E_CARDINAL, SUB_NO, map_elements);
@@ -79,33 +79,4 @@ static void	inner_tokenizer(char *split_a_i, t_map_element **map_elements)
 			SUB_CEILING, map_elements);
 	else
 		tokenize_map_element(split_a_i, E_MAP, 0, map_elements);
-}
-
-/*
-Except for the map content, each type of element can be separated by one or
-more empty line(s).
-*/
-t_map_element	*tokenizer(const char *map_name)
-{
-	int				map_fd;
-	char			*file_str;
-	char			**split_a;
-	int				i;
-	t_map_element	*map_elements;
-
-	map_fd = get_map_fd(map_name);
-	file_to_str(map_fd, &file_str);
-	split_a = ft_split(file_str, '\n');
-	if (!split_a)
-		print_exit("Error: ft_split()\n");
-	i = 0;
-	map_elements = 0;
-	while (split_a[i])
-	{
-		inner_tokenizer(split_a[i], &map_elements);
-		i++;
-	}
-	free_splitted_array(split_a);
-	free(file_str);
-	return (map_elements);
 }

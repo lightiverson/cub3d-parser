@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 12:00:46 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 13:14:09 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:15:42 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /* Private libraries */
 # include "../structs.h"
 # include "../libft/libft.h"
-# include "../utils.h"
+# include "../utils/utils.h"
 
 enum e_element_type {
 	E_CARDINAL = 1,
@@ -46,6 +46,6 @@ int				get_map_fd(const char *map_name);
 int				file_to_str(int fd, char **file_str);
 
 /* tokenize.c */
-t_map_element	*tokenizer(const char *map_name);
+void	inner_tokenizer(char *split_a_i, t_map_element **map_elements);
 
 #endif /* tokenize.h */

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_breezy.c                                      :+:    :+:            */
+/*   utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/16 18:37:22 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/16 18:37:46 by kgajadie      ########   odam.nl         */
+/*   Created: 2022/10/26 12:02:22 by kgajadie      #+#    #+#                 */
+/*   Updated: 2022/11/29 15:25:42 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_map_elements(t_map_element *head)
 	}
 }
 
-void	free_stack(t_stack *stack)
+bool	free_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 
@@ -48,4 +48,15 @@ void	free_stack(t_stack *stack)
 		stack = stack->next;
 		free(tmp);
 	}
+	return (false);
+}
+
+int	count_ptrs(char **splitted_array)
+{
+	int	i;
+
+	i = 0;
+	while (splitted_array[i])
+		i++;
+	return (i);
 }

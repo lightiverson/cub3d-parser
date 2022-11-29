@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 16:05:10 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/24 10:38:34 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 15:14:43 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <limits.h>
 # include <stdlib.h>
-# include "structs.h"
+# include "../structs.h"
 
 /* utils_ft_strtol.c */
 void	init_data(t_data *data, const char *nptr);

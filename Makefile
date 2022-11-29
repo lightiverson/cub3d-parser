@@ -1,26 +1,27 @@
 NAME :=		cub3d
-VPATH :=	parse:\
+VPATH :=	ft_strtol:\
+			parse:\
 			tokenize:\
+			utils:\
 			validate_tokens
-HEADERS :=	parse.h \
+HEADERS :=	ft_strtol.h \
+			parse.h \
 			tokenize.h \
+			utils.h \
 			validate_tokens.h \
-			ft_strtol.h \
-			structs.h \
-			utils.h
+			structs.h
 MAIN :=		obj/main.o
-OBJECTS :=	obj/ll_to_a_map.o \
-			obj/parse_floor_ceiling.o \
+OBJECTS :=	obj/ft_strtol_utils.o \
+			obj/ft_strtol.o \
+			obj/ll_to_a_map.o \
 			obj/parse.o \
 			obj/file_to_str.o \
 			obj/tokenize.o \
+			obj/prints.o \
+			obj/utils.o \
 			obj/floodfill.o \
 			obj/validate_map_elements.o \
-			obj/validate_non_map_elements.o \
-			obj/free_breezy.o \
-			obj/ft_strtol_utils.o \
-			obj/ft_strtol.o \
-			obj/utils.o
+			obj/validate_non_map_elements.o
 LDFLAGS ?=
 CFLAGS ?=	-Wall -Wextra -Werror
 LIBFT :=	./libft

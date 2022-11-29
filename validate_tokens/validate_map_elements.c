@@ -6,11 +6,19 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 16:28:12 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/24 13:10:05 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/11/29 14:55:26 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_tokens.h"
+
+void	init_has_c(t_has_c *data)
+{
+	data->has_no = false;
+	data->has_so = false;
+	data->has_we = false;
+	data->has_ea = false;
+}
 
 /*
 Except for the map content which always has to be the last, each type of
@@ -52,7 +60,6 @@ bool	has_three_map_elements_min(t_map_element *map_element)
 The map must be composed of only 6 possible characters: 0 for an empty space,
 1 for a wall, and N,S,E or W for the player’s start position and spawning
 orientation.
-
 Moet nog getest worden
 */
 bool	has_invalid_chars(t_map_element *map_element)
