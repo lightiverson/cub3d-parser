@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 11:44:36 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/25 12:00:14 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/12/06 14:12:55 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	**ll_to_a_map(t_map_element *map_element)
 	a_map = calloc_a_map(map_element);
 	if (!a_map)
 	{
-		perror("Error: malloc()");
+		perror("Error\nmalloc()");
 		exit(EXIT_FAILURE);
 	}
 	map_col_size = get_map_col_size(map_element);

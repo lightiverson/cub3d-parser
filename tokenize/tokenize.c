@@ -6,7 +6,7 @@
 /*   By: kgajadie <kgajadie@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 11:59:44 by kgajadie      #+#    #+#                 */
-/*   Updated: 2022/11/29 15:15:55 by kgajadie      ########   odam.nl         */
+/*   Updated: 2022/12/06 14:12:55 by kgajadie      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_map_element	*init_map_element(char *map_element, int type,
 	node = malloc(sizeof(*node));
 	if (!node)
 	{
-		perror("Error: malloc()\n");
+		perror("Error\nmalloc()\n");
 		exit(1);
 	}
 	node->map_element = map_element;
@@ -54,7 +54,7 @@ static void	tokenize_map_element(char *input_elem, int type,
 	s = strdup(input_elem);
 	if (!s)
 	{
-		printf("Error: malloc()\n");
+		printf("Error\nmalloc()\n");
 		exit(1);
 	}
 	node = init_map_element(s, type, sub_type);
