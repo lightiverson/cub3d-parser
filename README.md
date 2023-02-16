@@ -1,5 +1,23 @@
-# cub3d
+# Cub3D Parser
+The parser section for the Cub3D project.
 
+## Installation
+```bash
+  git clone git@github.com:lightiverson/cub3d-parser.git
+  cd cub3d-parser
+  make
+```
+    
+## Usage/Examples
+```bash
+./cub3d /maps/map.cub
+```
+or
+```bash
+./open_all_maps.sh
+```
+
+## Running Docker container
 Bouw image genaamd ubuntu-cub3d op basis van Dockerfile:
 ```bash
 docker build -t ubuntu-cub3d-sanitize .
